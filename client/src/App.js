@@ -9,8 +9,8 @@ import {
 
 //Import Pages
 import PresentationPage from './Pages/PresentationPage/PresentationPage';
-import Login from './Pages/Login/Login';
-import Signup from './Pages/Signup/Signup';
+import LogIn from './Pages/LogIn/LogIn';
+import SignUp from './Pages/SignUp/SignUp';
 
 //App
 const App = () => {
@@ -20,12 +20,12 @@ const App = () => {
       element: <PresentationPage />,
     },
     {
-      path: '/login',
-      element: <Login />,
+      path: '/LogIn',
+      element: <LogIn />,
     },
     {
-      path: '/signup',
-      element: <Signup />,
+      path: '/SignUp',
+      element: <SignUp />,
     },
   ]);
   return (
