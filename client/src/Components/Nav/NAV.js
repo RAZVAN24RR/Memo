@@ -15,7 +15,9 @@ const NAV = (props) => {
     <>
       <Nav fluid="md" className="justify-content-center">
         <Nav.Item>
-          <img className="image-nav" src={LOGO} alt="LOGO" />
+          <a href="/">
+            <img className="image-nav" src={LOGO} alt="LOGO" />
+          </a>
         </Nav.Item>
         {props.elements.map((element) => {
           return (
