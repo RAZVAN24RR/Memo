@@ -2,7 +2,7 @@
 import React from 'react';
 
 //CSS Imports
-import './NAV';
+import './NAV.css';
 
 //Bootstrap Imports
 import Nav from 'react-bootstrap/Nav';
@@ -13,23 +13,25 @@ import LOGO from '../../assets/Logo.png';
 const NAV = (props) => {
   return (
     <>
-      <Nav fluid="md" className="justify-content-center">
+      <Nav className="NAV" fluid="md">
         <Nav.Item>
           <a href="/">
             <img className="image-nav" src={LOGO} alt="LOGO" />
           </a>
         </Nav.Item>
-        {props.elements.map((element) => {
-          return (
-            <Nav.Item
-              style={{ display: 'flex' }}
-              className="align-items-center"
-              key={element.key}
-            >
-              <Nav.Link href={element.path}>{element.name}</Nav.Link>
-            </Nav.Item>
-          );
-        })}
+        <div className="alignRight">
+          {props.elements.map((element) => {
+            return (
+              <Nav.Item
+                style={{ display: 'flex' }}
+                className="align-items-center"
+                key={element.key}
+              >
+                <Nav.Link href={element.path}>{element.name}</Nav.Link>
+              </Nav.Item>
+            );
+          })}
+        </div>
       </Nav>
     </>
   );
