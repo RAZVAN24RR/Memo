@@ -22,17 +22,22 @@ const SignUp = () => {
 
   const options = ['Manager', 'Old', 'New'];
 
-  const handleName = (name) => {
-    setName(name.target.value);
+  const handleName = (event) => {
+    setName(event.target.value);
   };
 
-  const handleEmail = (email) => {
-    setEmail(email.target.value);
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleDropdown = (option) => {
     setRank(option);
   };
+
+  const handleClick = event => {
+    event.preventDefault();
+    
+}
 
   return (
     <>
@@ -85,7 +90,7 @@ const SignUp = () => {
             </Dropdown>
           </Form.Group>
           <div className="buttonSubmit">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleClick}>
               Submit
             </Button>
           </div>
