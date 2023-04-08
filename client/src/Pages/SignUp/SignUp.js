@@ -35,10 +35,21 @@ const SignUp = () => {
     setRank(option);
   };
 
+<<<<<<< Updated upstream
   const handleClick = event => {
     event.preventDefault();
     
 }
+=======
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const responseSubmit = await axios.post('');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+>>>>>>> Stashed changes
 
   return (
     <>
