@@ -1,6 +1,6 @@
 //Classic Imports
 import React from 'react';
-import { useState } from 'react';
+import { useState, createRef } from 'react';
 import axios from 'axios';
 //CSS Imports
 import './SignUp.css';
@@ -19,26 +19,33 @@ import NAV from '../../Components/Nav/NAV';
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [rank, setRank] = useState(null);
 
   const options = ['Manager', 'Old', 'New'];
 
   const handleName = (event) => {
     setName(event.target.value);
+    
   };
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
 
+  const handlePassword = event => {
+    setPassword(event.target.value);
+  }
+
   const handleDropdown = (option) => {
     setRank(option);
+    //console.log(option);
   };
 
   const handleClick = event => {
     event.preventDefault();
-    
-}
+    console.log(email, name, rank, password);
+  }
 
   return (
     <>
@@ -52,13 +59,13 @@ const SignUp = () => {
       <div className="formSignUp">
         <Form>
           <Form.Group
-            onChange={handleName}
+            onChange={null}
             className="mb-3"
             controlId="formBasicEmail"
           >
             <Form.Label>Name</Form.Label>
             <Form.Control
-              onChange={handleEmail}
+              onChange={handleName}
               type="email"
               placeholder="Name"
             />
@@ -69,10 +76,14 @@ const SignUp = () => {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" placeholder="Enter email" onChange={handleEmail} />
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Enter password" onChange={handlePassword} />
           </Form.Group>
           <Form.Group className="mb-3 " controlId="formBasicCheckbox">
             <Dropdown>
@@ -82,7 +93,7 @@ const SignUp = () => {
                 {options.map((option, index) => (
                   <Dropdown.Item
                     key={index}
-                    onSelect={() => handleDropdown(option)}
+                    onClick={() => handleDropdown(option)}
                   >
                     {option}
                   </Dropdown.Item>
