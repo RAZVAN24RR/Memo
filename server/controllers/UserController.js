@@ -2,7 +2,9 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find({}, { password: 0 });
+
+    console.log(users);
     res.status(200).json({
       status: 'success',
       results: users.length,
