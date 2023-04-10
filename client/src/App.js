@@ -2,8 +2,6 @@
 import React from 'react';
 import {
   createBrowserRouter,
-  createRoutesFromElements,
-  Route,
   RouterProvider,
 } from 'react-router-dom';
 
@@ -11,6 +9,7 @@ import {
 import PresentationPage from './Pages/PresentationPage/PresentationPage';
 import LogIn from './Pages/LogIn/LogIn';
 import SignUp from './Pages/SignUp/SignUp';
+import Profile from './Pages/Profile/Profile';
 
 //App
 const App = () => {
@@ -27,11 +26,15 @@ const App = () => {
       path: '/SignUp',
       element: <SignUp />,
     },
+    {
+        path: '/profile/:userId',
+        element: <Profile />
+    },
   ]);
   return (
-    <React.StrictMode>
+    <>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </>
   );
 };
 export default App;

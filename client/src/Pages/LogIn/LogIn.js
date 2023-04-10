@@ -8,8 +8,12 @@ import './LogIn';
 
 //Components Imports
 import NAV from '../../Components/Nav/NAV';
+import AuthService from '../../services/auth.service';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { Navigate } from 'react-router';
 
 const LogIn = () => {
+    const [jwt, setJwt] = useLocalStorage('jwt');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -24,38 +28,49 @@ const LogIn = () => {
     const handleClick = event => {
         event.preventDefault();
         console.log(email, password);
+        AuthService.login(email, password).then(_jwt => {
+            if (_jwt) {
+                setJwt(_jwt);
+            } else {
+                alert('failed to login!');
+            }
+        })
     }
 
-  return (
-    <>
-      <NAV
-        elements={[
-          { key: 0, name: 'Back', path: '/' },
-          { key: 1, name: 'SignUp', path: '/SignUp' },
-        ]}
-      />
-      <div className="Title">LogIn</div>
-      <div className="formSignUp">
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={handleEmail} />
-            {/* <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text> */}
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter password" onChange={handlePassword} />
-          </Form.Group>
-          <div className="buttonSubmit">
-            <Button variant="primary" type="submit" onClick={handleClick}>
-              Submit
-            </Button>
-          </div>
-        </Form>
-      </div>
-    </>
-  );
+    if (jwt) {
+        return <Navigate to='/' />;
+    }
+
+    return (
+        <>
+        <NAV
+            elements={[
+            { key: 0, name: 'Back', path: '/' },
+            { key: 1, name: 'SignUp', path: '/SignUp' },
+            ]}
+        />
+        <div className="Title">LogIn</div>
+        <div className="formSignUp">
+            <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" onChange={handleEmail} />
+                {/* <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+                </Form.Text> */}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Enter password" onChange={handlePassword} />
+            </Form.Group>
+            <div className="buttonSubmit">
+                <Button variant="primary" type="submit" onClick={handleClick}>
+                Submit
+                </Button>
+            </div>
+            </Form>
+        </div>
+        </>
+    );
 };
 export default LogIn;

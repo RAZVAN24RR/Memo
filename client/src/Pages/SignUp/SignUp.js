@@ -1,20 +1,20 @@
 //Classic Imports
 import React from 'react';
-import { useState, createRef } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import { HttpStatusCode } from 'axios';
 //CSS Imports
 import './SignUp.css';
 
 //Bootstrap Imports
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 //Components Imports
 import NAV from '../../Components/Nav/NAV';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { Navigate, useNavigate } from 'react-router';
+import UserService from '../../services/user.service';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -23,6 +23,8 @@ const SignUp = () => {
   const [rank, setRank] = useState(null);
 
   const options = ['Manager', 'Old', 'New'];
+  const [jwt] = useLocalStorage('jwt');
+  const navigate = useNavigate();
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -39,12 +41,24 @@ const SignUp = () => {
 
   const handleDropdown = (option) => {
     setRank(option);
-    //console.log(option);
   };
 
   const handleClick = event => {
     event.preventDefault();
     console.log(email, name, rank, password);
+    UserService.register(name, email, rank, password).then(res => {
+        if (res.status === HttpStatusCode.Created) {
+            navigate('/login');
+        } else {
+            alert('failed to create user!');
+        }
+    }, err => {
+        alert('failed to create user!!!');
+    })
+  }
+
+  if (jwt) {
+    return <Navigate to="/" />;
   }
 
   return (
