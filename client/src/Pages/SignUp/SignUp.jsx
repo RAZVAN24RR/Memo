@@ -8,7 +8,6 @@ import './SignUp.css';
 //Bootstrap Imports
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 //Components Imports
 import NAV from '../../Components/Nav/NAV';
@@ -21,7 +20,6 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const options = ['Manager', 'Old', 'New'];
   const [jwt] = useLocalStorage('jwt');
   const navigate = useNavigate();
 
