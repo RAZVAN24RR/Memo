@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  subordinates: {
+    type: [mongoose.Schema.Types.ObjectId]
   }
 });
 
