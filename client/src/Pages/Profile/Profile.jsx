@@ -8,6 +8,7 @@ function Profile(props) {
   const [jwt] = useLocalStorage('jwt');
   const [data, setData] = useState({});
   const [xp, setXp] = useState(null);
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
   const { userId } = useParams();
 
@@ -17,6 +18,14 @@ function Profile(props) {
       return;
     }
     UserService.profile(userId).then((_data) => {
+        console.log(_data);
+        if (_data.isManager) {
+            setRole('manager');
+        } else if (_data.years >= 1) {
+            setRole('old');
+        } else {
+            setRole('new');
+        }
         if (_data.months === 0) {
             setXp('< 1 month');
         } else {
@@ -34,6 +43,9 @@ function Profile(props) {
   return (
     <>
       <h1>{data.name}'s profile</h1>
+      <p>
+        Rank: <b>{role}</b>
+      </p>
       <p>
         Xp in company: <b>{xp}</b>
       </p>
