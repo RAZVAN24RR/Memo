@@ -37,7 +37,7 @@ exports.getUser = async (req, res) => {
 };
 exports.createUser = async (req, res) => {
   try {
-    let { name, email, password, rank } = req.body;
+    let { name, email, password } = req.body;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     password = hashedPassword;

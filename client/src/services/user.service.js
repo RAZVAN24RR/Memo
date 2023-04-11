@@ -1,19 +1,21 @@
-import { axiosInstanceToAPI } from "../Utils/networking.util";
+import { axiosInstanceToAPI } from '../Utils/networking.util';
 
-const register = async (name, email, rank, password) => {
-    const res = await axiosInstanceToAPI.post('/users', {
-        name, email, rank, password
-    });
-    return res;
-}
+const register = async (name, email, password) => {
+  const res = await axiosInstanceToAPI.post('/users', {
+    name,
+    email,
+    password,
+  });
+  return res;
+};
 
-const profile = async userId => {
-    return (await axiosInstanceToAPI.get(`/users/${userId}`)).data.data.user;
-}
+const profile = async (userId) => {
+  return (await axiosInstanceToAPI.get(`/users/${userId}`)).data.data.user;
+};
 
 const UserService = {
-    register, 
-    profile
-}
+  register,
+  profile,
+};
 
 export default UserService;
