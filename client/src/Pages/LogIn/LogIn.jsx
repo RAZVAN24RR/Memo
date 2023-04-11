@@ -38,7 +38,7 @@ const LogIn = () => {
     }
 
     if (jwt) {
-        return <Navigate to='/' />;
+        return <Navigate to='/ ' />;
     }
 
     return (

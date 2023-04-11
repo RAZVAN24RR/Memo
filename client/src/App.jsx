@@ -1,16 +1,13 @@
 //Classic Imports
 import React from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //Import Pages
 import PresentationPage from './Pages/PresentationPage/PresentationPage';
 import LogIn from './Pages/LogIn/LogIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Profile from './Pages/Profile/Profile';
-
+import Home from './Pages/Home/Home';
 //App
 const App = () => {
   const router = createBrowserRouter([
@@ -27,8 +24,12 @@ const App = () => {
       element: <SignUp />,
     },
     {
-        path: '/profile/:userId',
-        element: <Profile />
+      path: '/profile/:userId',
+      element: <Profile />,
+    },
+    {
+      path: '/home/:userId',
+      element: <Home />,
     },
   ]);
   return (

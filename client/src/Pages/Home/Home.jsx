@@ -2,9 +2,8 @@
 import React from 'react';
 
 //CSS Imports
-import './Signup';
 
-const Login = () => {
-  return <>Login</>;
+const Home = () => {
+  return <>Home</>;
 };
-export default Login;
+export default Home;

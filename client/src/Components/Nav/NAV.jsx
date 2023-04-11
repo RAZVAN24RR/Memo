@@ -12,7 +12,7 @@ import LOGO from '../../assets/Logo.png';
 
 const NAV = (props) => {
   return (
-    <>
+    <> 
       <Nav className="NAV" fluid="md">
         <Nav.Item>
           <a href="/">
