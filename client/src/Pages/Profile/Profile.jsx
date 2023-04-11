@@ -3,9 +3,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { useNavigate, useParams } from 'react-router';
 import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
-import { convertMillisecondsToYearsAndMonths } from '../../Utils/time.utils';
-
-
 
 function Profile(props) {
   const [jwt] = useLocalStorage('jwt');
