@@ -5,6 +5,8 @@ import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { convertMillisecondsToYearsAndMonths } from '../../Utils/time.utils';
 
+
+
 function Profile(props) {
   const [jwt] = useLocalStorage('jwt');
   const [data, setData] = useState({});
@@ -17,15 +19,11 @@ function Profile(props) {
       navigate(`/profile/${jwt_decode(jwt).userId}`);
       return;
     }
-    UserService.profile(userId).then(
-      (_data) => {
-        const date = new Date(_data.createdAt.toString());
-        const diff = Date.now() - date.getTime();
-        const { months, years } = convertMillisecondsToYearsAndMonths(diff);
-        if (months === 0) {
-          setXp('< 1 month');
+    UserService.profile(userId).then((_data) => {
+        if (_data.months === 0) {
+            setXp('< 1 month');
         } else {
-          setXp(`${years} years, ${months} months`);
+            setXp(`${_data.years} years, ${_data.months} months`);
         }
         setData(_data);
       },

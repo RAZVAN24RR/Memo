@@ -10,7 +10,7 @@ const register = async (name, email, password) => {
 };
 
 const profile = async (userId) => {
-  return (await axiosInstanceToAPI.get(`/users/${userId}`)).data.data.user;
+  return (await axiosInstanceToAPI.get(`/users/${userId}`)).data.user;
 };
 
 const UserService = {
