@@ -20,7 +20,6 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rank, setRank] = useState(null);
 
   const options = ['Manager', 'Old', 'New'];
   const [jwt] = useLocalStorage('jwt');
@@ -28,34 +27,32 @@ const SignUp = () => {
 
   const handleName = (event) => {
     setName(event.target.value);
-    
   };
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
 
-  const handlePassword = event => {
+  const handlePassword = (event) => {
     setPassword(event.target.value);
-  }
-
-  const handleDropdown = (option) => {
-    setRank(option);
   };
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     event.preventDefault();
-    console.log(email, name, rank, password);
-    UserService.register(name, email, rank, password).then(res => {
+
+    UserService.register(name, email, password).then(
+      (res) => {
         if (res.status === HttpStatusCode.Created) {
-            navigate('/login');
+          navigate('/login');
         } else {
-            alert('failed to create user!');
+          alert('failed to create user!');
         }
-    }, err => {
+      },
+      (err) => {
         alert('failed to create user!!!');
-    })
-  }
+      }
+    );
+  };
 
   if (jwt) {
     return <Navigate to="/" />;
@@ -90,31 +87,27 @@ const SignUp = () => {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={handleEmail} />
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              onChange={handleEmail}
+            />
             {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter password" onChange={handlePassword} />
+            <Form.Control
+              type="password"
+              placeholder="Enter password"
+              onChange={handlePassword}
+            />
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="formBasicCheckbox">
-            <Dropdown>
-              <Dropdown.Toggle variant="primary">{rank}</Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                {options.map((option, index) => (
-                  <Dropdown.Item
-                    key={index}
-                    onClick={() => handleDropdown(option)}
-                  >
-                    {option}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </Form.Group>
+          <Form.Group
+            className="mb-3 "
+            controlId="formBasicCheckbox"
+          ></Form.Group>
           <div className="buttonSubmit">
             <Button variant="primary" type="submit" onClick={handleClick}>
               Submit

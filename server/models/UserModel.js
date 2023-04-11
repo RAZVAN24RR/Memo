@@ -17,9 +17,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  rank: {
-    type: String,
-    required: true
+  isManager: {
+    type: Boolean,
+    default: false
   },
   age: {
     type: Number,
