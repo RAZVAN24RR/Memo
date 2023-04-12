@@ -11,6 +11,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Profile from './Pages/Profile/Profile';
 import Home from './Pages/Home/Home';
+import Footer from './Components/Footer/FOOTER';
 //App
 const App = () => {
   const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const App = () => {
       element: <Profile />,
     },
     {
-      path: '/home',
+      path: '/home/:userId',
       element: <Home />,
     },
   ]);
@@ -45,6 +46,7 @@ const App = () => {
       />
 
       <RouterProvider router={router} />
+      <Footer />
     </>
   );
 };

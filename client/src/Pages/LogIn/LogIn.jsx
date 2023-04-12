@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router';
 //CSS Imports
 import './LogIn';
 
@@ -11,12 +12,14 @@ import './LogIn';
 import AuthService from '../../services/auth.service';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Navigate } from 'react-router';
-import jwtDecode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 const LogIn = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -39,7 +42,7 @@ const LogIn = () => {
   };
 
   if (jwt) {
-    return <Navigate to="/" />;
+    navigate(`/home/${jwt_decode(jwt).userId}`);
   }
 
   return (

@@ -31,7 +31,7 @@ const NAV = (props) => {
         <Nav className="NAV" fluid="md">
           <Nav.Item>
             <a href="/">
-              <img className="image-nav" src={LOGO} alt="LOGO" />
+              <img className="image-nav"  src={LOGO}  alt="LOGO" />
             </a>
           </Nav.Item>
           <div className="alignRight">
@@ -61,7 +61,9 @@ const NAV = (props) => {
           </Nav.Item>
           <div className="alignRight">{data.name}</div>
           <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`profile/${data._id}`}>Profile</Nav.Link>
+            <Nav.Link href={`http://localhost:3000/profile/${data._id}`}>
+              Profile
+            </Nav.Link>
           </Nav.Item>
         </Nav>
       </>
