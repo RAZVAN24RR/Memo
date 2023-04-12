@@ -2,6 +2,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+//Components Imports
+import NAV from './Components/Nav/NAV';
+
 //Import Pages
 import PresentationPage from './Pages/PresentationPage/PresentationPage';
 import LogIn from './Pages/LogIn/LogIn';
@@ -28,12 +31,19 @@ const App = () => {
       element: <Profile />,
     },
     {
-      path: '/home/:userId',
+      path: '/home',
       element: <Home />,
     },
   ]);
   return (
     <>
+      <NAV
+        elements={[
+          { key: 0, name: 'SignUp', path: '/SignUp' },
+          { key: 1, name: 'LogIn', path: '/LogIn' },
+        ]}
+      />
+
       <RouterProvider router={router} />
     </>
   );

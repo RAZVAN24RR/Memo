@@ -10,7 +10,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 //Components Imports
-import NAV from '../../Components/Nav/NAV';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Navigate, useNavigate } from 'react-router';
 import UserService from '../../services/user.service';
@@ -58,12 +57,6 @@ const SignUp = () => {
 
   return (
     <>
-      <NAV
-        elements={[
-          { key: 0, name: 'Back', path: '/' },
-          { key: 1, name: 'LogIn', path: '/LogIn' },
-        ]}
-      />
       <div className="Title">SignUp</div>
       <div className="formSignUp">
         <Form>
