@@ -1,5 +1,5 @@
 //Classic Imports
-import React, { useEffect } from 'react';
+import React, {  } from 'react';
 
 //CSS Imports
 import './Home.css';

@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema({
     default: Date.now
   },
   subordinates: {
-    type: [mongoose.Schema.Types.ObjectId]
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'User'
   }
 });
 

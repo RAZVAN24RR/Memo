@@ -11,7 +11,6 @@ import './LogIn';
 // import NAV from '../../Components/Nav/NAV';
 import AuthService from '../../services/auth.service';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { Navigate } from 'react-router';
 import jwt_decode from 'jwt-decode';
 
 const LogIn = () => {
@@ -34,7 +33,7 @@ const LogIn = () => {
     AuthService.login(email, password).then((_jwt) => {
       if (_jwt) {
         setJwt(_jwt);
-        window.location = (`/home/${jwt_decode(_jwt).userId}`);
+        window.location = (`/home`);
       } else {
         alert('failed to login!');
       }
@@ -42,7 +41,7 @@ const LogIn = () => {
   };
 
   if (jwt) {
-    navigate(`/home/${jwt_decode(jwt).userId}`);
+    navigate(`/home`);
     return null;
   }
 
