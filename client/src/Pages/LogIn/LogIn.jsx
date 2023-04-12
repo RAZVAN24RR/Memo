@@ -31,10 +31,10 @@ const LogIn = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(email, password);
     AuthService.login(email, password).then((_jwt) => {
       if (_jwt) {
         setJwt(_jwt);
+        window.location = (`/home/${jwt_decode(_jwt).userId}`);
       } else {
         alert('failed to login!');
       }
@@ -43,6 +43,7 @@ const LogIn = () => {
 
   if (jwt) {
     navigate(`/home/${jwt_decode(jwt).userId}`);
+    return null;
   }
 
   return (
