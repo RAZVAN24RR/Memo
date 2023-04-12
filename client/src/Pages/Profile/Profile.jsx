@@ -16,7 +16,7 @@ function Profile(props) {
   const { userId } = useParams();
 
   useEffect(() => {
-    if (userId === 'me') {
+    if (userId === 'me' && jwt) {
       navigate(`/profile/${jwt_decode(jwt).userId}`);
       return;
     }
@@ -43,6 +43,11 @@ function Profile(props) {
       }
     );
   }, [jwt, navigate, userId]);
+
+  if (!jwt) {
+    navigate('/login');
+    return null;
+  }
 
   return (
     <>

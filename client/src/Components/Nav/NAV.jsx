@@ -93,7 +93,7 @@ const NAV = (props) => {
           </Nav.Item>
           <div className="alignRight">{data.name}</div>
           <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`http://localhost:3000/home/${data._id}`}>
+            <Nav.Link href={`/home`}>
               Home
             </Nav.Link>
           </Nav.Item>
