@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import {useLocalStorage} from '../../hooks/useStorage';
 import { useNavigate, useParams } from 'react-router';
 import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';

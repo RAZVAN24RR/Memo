@@ -13,15 +13,15 @@ import Nav from 'react-bootstrap/Nav';
 import LOGO from '../../assets/Logo.png';
 
 //Components Imports
-import useLocalStorage from '../../hooks/useLocalStorage';
+import {useLocalStorage} from '../../hooks/useStorage';
 import UserService from '../../services/user.service';
 
 const NAV = (props) => {
-  const [jwt] = useLocalStorage('jwt');
+  const [jwt,, removeJwt] = useLocalStorage('jwt');
   const [data, setData] = useState({});
 
   const handleLogOut = () => {
-    localStorage.clear();
+    removeJwt();
   };
 
   useEffect(() => {

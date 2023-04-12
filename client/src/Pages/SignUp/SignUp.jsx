@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 //Components Imports
-import useLocalStorage from '../../hooks/useLocalStorage';
+import {useLocalStorage} from '../../hooks/useStorage';
 import { Navigate, useNavigate } from 'react-router';
 import UserService from '../../services/user.service';
 
