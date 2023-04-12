@@ -11,7 +11,6 @@ import './LogIn';
 // import NAV from '../../Components/Nav/NAV';
 import AuthService from '../../services/auth.service';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import jwt_decode from 'jwt-decode';
 
 const LogIn = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
