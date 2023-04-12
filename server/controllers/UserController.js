@@ -1,6 +1,6 @@
 const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
-const {convertMillisecondsToYearsAndMonths} = require('../utils/time.utils');
+const { convertMillisecondsToYearsAndMonths } = require('../utils/time.utils');
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -23,15 +23,15 @@ exports.getAllUsers = async (req, res) => {
 };
 exports.getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).lean();
+    const user = await User.findById(req.params.id, { password: 0 }).lean();
     const date = new Date(user.createdAt);
     const diff = Date.now() - date.getTime();
     const { months, years } = convertMillisecondsToYearsAndMonths(diff);
-    console.log('ERRRR:',  user);
+    console.log('ERRRR:', user);
 
     res.status(200).json({
       status: 'success',
-      user: {...user, months, years}
+      user: { ...user, months, years }
     });
   } catch (err) {
     res.status(400).json({

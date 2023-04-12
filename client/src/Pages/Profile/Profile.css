@@ -1,32 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-.NAV {
+.Profile {
   padding-top: 2.5vw;
-  width: 70%;
+  width: 60%;
+  height: 60vh;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
 }
 
-.image-nav {
-  width: 133px;
-  height: 56px;
-}
-
 /* Pentru mobile , e un bug  */
 @media only screen and (max-width: 500px) {
-  .NAV {
+  .Profile {
     width: 100%;
   }
-  .alignRight {
-    margin-right: 2vw;
-  }
-}
-
-.alignRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  font-family: 'Roboto', sans-serif;
-  /* margin-right: 5vw; */
 }
