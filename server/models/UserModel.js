@@ -32,6 +32,27 @@ const userSchema = new mongoose.Schema({
   subordinates: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User'
+  },
+  yearsOfExperience: {
+    type: Number
+  },
+  frontend: {
+    type: Boolean,
+    default: false
+  },
+  backend: {
+    type: Boolean,
+    default: false
+  },
+  frontendAndBackend: {
+    type: Boolean,
+    default: false
+  },
+  framework: {
+    type: [String]
+  },
+  familiarProgramingLanguages: {
+    type: [String]
   }
 });
 
