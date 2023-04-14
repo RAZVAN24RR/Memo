@@ -60,3 +60,17 @@ exports.createUser = async (req, res) => {
     res.status(500).json({ error: 'Something went wrong.' });
   }
 };
+exports.updateUserSkills = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    res.status(200).json({
+      status: 'success'
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Something went wrong.' });
+  }
+};

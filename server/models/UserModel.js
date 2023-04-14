@@ -36,23 +36,12 @@ const userSchema = new mongoose.Schema({
   yearsOfExperience: {
     type: Number
   },
-  frontend: {
-    type: Boolean,
-    default: false
-  },
-  backend: {
-    type: Boolean,
-    default: false
-  },
-  frontendAndBackend: {
-    type: Boolean,
-    default: false
+  techStack: {
+    type: String,
+    enum: ['FRONTEND', 'BACKEND', 'BOTH']
   },
   framework: {
-    type: [String]
-  },
-  familiarProgramingLanguages: {
-    type: [String]
+    type: String
   }
 });
 
