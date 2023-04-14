@@ -13,11 +13,11 @@ import Nav from 'react-bootstrap/Nav';
 import LOGO from '../../assets/Logo.png';
 
 //Components Imports
-import {useLocalStorage} from '../../hooks/useStorage';
+import { useLocalStorage } from '../../hooks/useStorage';
 import UserService from '../../services/user.service';
 
 const NAV = (props) => {
-  const [jwt,, removeJwt] = useLocalStorage('jwt');
+  const [jwt, , removeJwt] = useLocalStorage('jwt');
   const [data, setData] = useState({});
 
   const handleLogOut = () => {
@@ -62,7 +62,7 @@ const NAV = (props) => {
       <>
         <Nav className="NAV" fluid="md">
           <Nav.Item>
-            <a href="/">
+            <a href="http://localhost:3000/home">
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
@@ -87,15 +87,13 @@ const NAV = (props) => {
       <>
         <Nav className="NAV" fluid="md">
           <Nav.Item>
-            <a href="/">
+            <a href="http://localhost:3000/home">
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
           <div className="alignRight">{data.name}</div>
           <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`/home`}>
-              Home
-            </Nav.Link>
+            <Nav.Link href={`/home`}>Home</Nav.Link>
           </Nav.Item>
         </Nav>
       </>
