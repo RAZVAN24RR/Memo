@@ -6,36 +6,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NAV from './Components/Nav/NAV';
 
 //Import Pages
-import PresentationPage from './Pages/PresentationPage/PresentationPage';
-import LogIn from './Pages/LogIn/LogIn';
-import SignUp from './Pages/SignUp/SignUp';
-import Profile from './Pages/Profile/Profile';
-import Home from './Pages/Home/Home';
+
 import Footer from './Components/Footer/FOOTER';
+import ROUTES from './routes';
 //App
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <PresentationPage />,
-    },
-    {
-      path: '/LogIn',
-      element: <LogIn />,
-    },
-    {
-      path: '/SignUp',
-      element: <SignUp />,
-    },
-    {
-      path: '/profile/:userId',
-      element: <Profile />,
-    },
-    {
-      path: '/home',
-      element: <Home />,
-    },
-  ]);
+  const router = createBrowserRouter(ROUTES);
   return (
     <>
       <NAV

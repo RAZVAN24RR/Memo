@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 //CSS Imports
 import './Login.css';
 
@@ -40,8 +40,7 @@ const LogIn = () => {
   };
 
   if (jwt) {
-    navigate(`/home`);
-    return null;
+    return <Navigate to={'/profile/me'}/>;
   }
 
   return (
