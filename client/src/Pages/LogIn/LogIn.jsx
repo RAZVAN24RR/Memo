@@ -1,11 +1,11 @@
 //Classic Imports
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router';
 //CSS Imports
 import './Login.css';
+
 
 //Components Imports
 // import NAV from '../../Components/Nav/NAV';
@@ -57,9 +57,7 @@ const LogIn = () => {
                 placeholder="Enter email"
                 onChange={handleEmail}
               />
-              {/* <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-                </Form.Text> */}
+
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -79,6 +77,6 @@ const LogIn = () => {
         <div className="Log-line"></div>
       </div>
     </>
-  );
+  );//*/
 };
 export default LogIn;

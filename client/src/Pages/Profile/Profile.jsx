@@ -3,13 +3,14 @@ import {useLocalStorage} from '../../hooks/useStorage';
 import { useNavigate, useParams } from 'react-router';
 import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
+import { Circles } from  'react-loader-spinner'
 
 //CSS
 import './Profile.css';
 
 function Profile(props) {
   const [jwt] = useLocalStorage('jwt');
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [xp, setXp] = useState(null);
   const [role, setRole] = useState('');
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ function Profile(props) {
     }
     UserService.profile(userId).then(
       (_data) => {
-        console.log(_data);
         if (_data.isManager) {
           setRole('manager');
         } else if (_data.years >= 1) {
@@ -44,15 +44,29 @@ function Profile(props) {
     );
   }, [jwt, navigate, userId]);
 
+
+
   if (!jwt) {
     navigate('/login');
     return null;
   }
 
+  if (data == null) {
+    return <Circles
+        height="800"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="circles-loading"
+        wrapperStyle={{'paddingLeft': '45%'}}
+        wrapperClass=""
+        visible={true}
+    />
+  }
+
   return (
-    <>
+    <div>
       <div className="Profile" fluid="md">
-        <h1>{data.name}'s profile</h1>
+        <h1>{data?.name}'s profile</h1>
         <p>
           Rank: <b>{role}</b>
         </p>
@@ -60,7 +74,7 @@ function Profile(props) {
           Xp in company: <b>{xp}</b>
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
