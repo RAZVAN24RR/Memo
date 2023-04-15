@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-// import './footer.css';
+import './FOOTER.css';
 const Footer = () => {
   return (
-    <footer className="bg-light container-fluid noscroll">
-      <Container>
-        <Row style={{ paddingTop: '4rem' }}>
+    <footer className="bg-light container-fluid noscroll  ">
+      <Container className="footer">
+        <Row className="footer-row">
           <div className="d-flex justify-content-between   ">
             <Col md={6}>
-              <h5>About Us</h5>
+              <h5>
+                <b>About Us</b>
+              </h5>
               <p>
                 Our company was founded on the principles of excellence,
                 integrity, and innovation. We believe that these values are the
@@ -16,8 +18,10 @@ const Footer = () => {
                 choose us time and time again.
               </p>
             </Col>
-            <Col md={{ span: 10, offset: 3 }}>
-              <h5>Contact Us</h5>
+            <Col md={{ span: 5, offset: 3 }}>
+              <h5>
+                <b>Contact Us</b>
+              </h5>
               <p>
                 <i className="bi bi-geo-alt"></i> Piața Consiliul Europei 2,
                 Timișoara 300627

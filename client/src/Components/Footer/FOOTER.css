@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+.footer {
+  backdrop-filter: blur(15px);
+  opacity: 0.8;
+  padding-bottom: 2rem;
+}
+.footer-row {
+  z-index: 4;
+  padding-top: 4rem;
+}

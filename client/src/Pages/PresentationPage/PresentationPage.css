@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 .Pres {
   padding-top: 2.5vw;
-  width: 60%;
-  height: 60vh;
+  height: 85vh;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
@@ -14,3 +13,125 @@
     width: 100%;
   }
 }
+
+.Pres-title {
+  width: 30%;
+  margin-top: 140px !important;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 900;
+  color: #282828;
+  letter-spacing: 2px;
+  overflow: hidden;
+  border-right: 0.15em solid #0d6efd;
+  border-radius: 10px;
+  white-space: nowrap;
+  font-size: 3rem;
+  animation: typing1 2s steps(40) forwards; /* animatie text */
+}
+.Pres-titleh2 {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  /* animation: typing2 2s steps(40) forwards; */
+  animation-delay: 3s;
+}
+.arrow-down {
+  display: inline-block;
+  width: 0;
+
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid orange;
+  animation: pulse 1s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.5vh;
+  padding-bottom: 3.5vh;
+}
+.Pres-section {
+  width: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-top: 6vh;
+}
+.Pres-btns {
+  width: 210px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.Pres-line {
+  width: 10px;
+  height: 40px;
+  margin-top: 10vh;
+  margin-left: 10vw;
+  animation: blink-cursor 1s step-start infinite;
+  border-radius: 20px 0 0 20px;
+}
+.Line-Bottom {
+  width: 80%;
+  margin-left: 10vw;
+  margin-top: 10vh;
+  border-top: 3px solid orange;
+  border-radius: 10px 10px;
+}
+@keyframes typing1 {
+  from {
+    width: 0;
+    display: block;
+  }
+  to {
+    width: 80%;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes blink-cursor {
+  0% {
+    border-right: 0.35em solid #0d6efd;
+  }
+  25% {
+    border-right: 0.35em solid #ffff;
+  }
+  50% {
+    border-right: 0.35em solid #0d6efd;
+  }
+  100% {
+    border-right: 0.35em solid #0d6efd;
+  }
+}
+#tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+@media only screen and (min-width: 1000px) {
+  @keyframes typing1 {
+    from {
+      width: 0;
+      display: block;
+    }
+    to {
+      width: 50%;
+    }
+  }
+} ;

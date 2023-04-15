@@ -40,8 +40,10 @@ const App = () => {
     <>
       <NAV
         elements={[
-          { key: 0, name: 'SignUp', path: '/SignUp' },
-          { key: 1, name: 'LogIn', path: '/LogIn' },
+          { key: 0, name: 'Mobile', path: '/' },
+          { key: 1, name: 'Community', path: '/' },
+          { key: 2, name: 'SignUp', path: '/SignUp' },
+          { key: 3, name: 'LogIn', path: '/LogIn' },
         ]}
       />
 
