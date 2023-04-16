@@ -13,7 +13,7 @@ const login = async ({ email, password }) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid username or password.' });
     }
-    const token = jwt.sign({ userId: user._id }, 'secret');
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
     return token;
 }
 

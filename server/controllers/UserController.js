@@ -40,7 +40,7 @@ exports.createUser = async (req, res) => {
 };
 exports.updateUserSkills = async (req, res) => {
   try {
-    await UserService.updateUserSkills(req.params.id, req.body);
+    await UserService.updateUserSkills(res.locals.user._id, req.body);
     res.status(200).send('OK')
   } catch (err) {
     console.log(err);

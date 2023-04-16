@@ -1,5 +1,6 @@
 const express = require('express');
 const UserController = require('../controllers/UserController');
+const AuthMiddleware = require('../middlewares/auth.middleware');
 
 const router = express.Router();
 
@@ -11,6 +12,6 @@ router
 router
   .route('/:id')
   .get(UserController.getUser)
-  .patch(UserController.updateUserSkills);
+router.patch('/', AuthMiddleware.loggedIn, UserController.updateUserSkills);
 
 module.exports = router;
