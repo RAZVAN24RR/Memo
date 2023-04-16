@@ -40,7 +40,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['FRONTEND', 'BACKEND', 'BOTH']
   },
-  framework: {
+  frameworks: {
+    type: [String]
+  },
+  comStyle: {
     type: String
   }
 });

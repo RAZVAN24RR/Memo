@@ -3,6 +3,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Profile from './Pages/Profile/Profile';
 import Home from './Pages/Home/Home';
+import Skills from './Pages/Skills/Skills';
 
 const ROUTES = [
     {
@@ -25,6 +26,10 @@ const ROUTES = [
       path: '/home',
       element: <Home />,
     },
+    {
+        path: '/skills',
+        element: <Skills />
+    }
 ];
 
 export default ROUTES;
