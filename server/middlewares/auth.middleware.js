@@ -3,7 +3,7 @@ const User = require('../models/UserModel');
 
 const loggedIn = async (req, res, next) => {
     try {
-        const token = req.headers['jwt'];
+        const token = req.headers.authorization.slice(1, -1);
         const decodedJwt = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(decodedJwt.userId);
         res.locals.user = user;

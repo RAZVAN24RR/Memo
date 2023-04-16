@@ -7,6 +7,18 @@ import { Circles } from  'react-loader-spinner'
 
 //CSS
 import './Profile.css';
+import Button from 'react-bootstrap/esm/Button';
+
+const printHelper = data => {
+    if (!data) {
+        return "NOT SET!(edit your profile's skills)";
+    }
+    return data;
+}
+
+const techStackHelper = techStack => {
+    return techStack === 'BOTH' ? 'FULLSTACK' : techStack;
+}
 
 function Profile(props) {
   const [jwt] = useLocalStorage('jwt');
@@ -21,6 +33,7 @@ function Profile(props) {
       navigate(`/profile/${jwt_decode(jwt).userId}`);
       return;
     }
+    
     UserService.profile(userId).then(
       (_data) => {
         if (_data.isManager) {
@@ -66,13 +79,28 @@ function Profile(props) {
   return (
     <div>
       <div className="Profile" fluid="md">
-        <h1>{data?.name}'s profile</h1>
+        <h1>{data.name}'s profile</h1>
         <p>
           Rank: <b>{role}</b>
         </p>
         <p>
           Xp in company: <b>{xp}</b>
         </p>
+        <p>
+            Tech-stack: <b>{techStackHelper(printHelper(data.techStack))}</b>
+        </p>
+        <p>
+            Communication-style: <b>{printHelper(data.comStyle)}</b>
+        </p>
+        <p>
+            Frameworks: <b>{printHelper(data?.frameworks?.join(', '))}</b>
+        </p>
+        <p>
+            Years of experience: <b>{printHelper(data.yearsOfExperience)}</b>
+        </p>
+        <Button variant="primary" size="lg" onClick={() => navigate('/skills')}>
+        Update Skills
+        </Button>
       </div>
     </div>
   );

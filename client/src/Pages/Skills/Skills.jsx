@@ -4,6 +4,7 @@ import FESkills from './FESkills';
 import BESkills from './BESkills';
 import SoftSkills from './SoftSkills';
 import { useNavigate } from 'react-router';
+import { axiosAuthInstanceToAPI } from '../../Utils/networking.util';
 
 function Skills() {
     let [index, setIndex] = useState(0);
@@ -42,10 +43,22 @@ function Skills() {
 
 
     useEffect(() => {
-        if (index === forms.length) {
+        if (index === forms.length) {/*
+            for (let skill in skills) {
+                //console.log(skills[skill]);
+                if (skill === undefined || skills[skill]?.length === 0 || skills[skill] === '') {
+                    delete skills[skill];
+                }
+            }//*/
             //request
-            console.log(skills);
-            //navigate('/profile/me');
+            //console.log(skills);
+            
+            axiosAuthInstanceToAPI.patch('/users/', skills).then(res => {
+                navigate('/profile/me');
+            }, err => {
+                console.error(err);
+                alert('ERROR!');
+            })//*/
         }
     }, [forms.length, index, navigate, skills])
 

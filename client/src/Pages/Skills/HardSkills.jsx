@@ -18,6 +18,10 @@ function HardSkills({ upSkill }) {
 
     const handleSubmit = event => {
         event.preventDefault();
+        if (!techStack) {
+            alert('select a tech stach!');
+            return;
+        }
         const yearsOfExperience = Number(xp);
         upSkill({ yearsOfExperience, techStack });
     }
