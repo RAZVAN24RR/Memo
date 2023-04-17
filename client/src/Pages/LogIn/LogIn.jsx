@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate } from 'react-router';
 //CSS Imports
 import './Login.css';
 
@@ -16,8 +16,6 @@ const LogIn = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
 
   const handleEmail = (event) => {
     setEmail(event.target.value);

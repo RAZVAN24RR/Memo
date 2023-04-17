@@ -5,6 +5,7 @@ import BESkills from './BESkills';
 import SoftSkills from './SoftSkills';
 import { useNavigate } from 'react-router';
 import { axiosAuthInstanceToAPI } from '../../Utils/networking.util';
+import Button from 'react-bootstrap/esm/Button';
 
 function Skills() {
     let [index, setIndex] = useState(0);
@@ -66,6 +67,9 @@ function Skills() {
         <div>
             <p>SKILL page</p>
             {forms[index]}
+            <Button variant="primary" onClick={() => setIndex(prev => {
+                return prev - 1;
+            })} className={index === 0 ? 'invisible' : 'visible'}>&#8592;</Button>
         </div>
     );
 }

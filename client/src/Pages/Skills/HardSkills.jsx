@@ -31,7 +31,7 @@ function HardSkills({ upSkill }) {
             hard
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="">
-                    <Form.Label>Xp</Form.Label>
+                    <Form.Label> <h4>Experience:</h4> </Form.Label>
                     <Form.Control type="number" min={0} onChange={handleChange} />
                 </Form.Group>
                 <h4>Stack:</h4>
@@ -47,7 +47,7 @@ function HardSkills({ upSkill }) {
                         />)
                     }
                 </div>
-                <Button variant="primary" type='submit'>Next</Button>
+                <Button variant="primary" type='submit'>&#8594;</Button>
             </Form>
         </div>
     );

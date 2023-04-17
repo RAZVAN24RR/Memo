@@ -27,7 +27,7 @@ function SoftSkills({ upSkill }) {
                     onClick={handleComClick}
                 />)
             }
-            <Button variant="primary" onClick={handleSubmit}>Next</Button>
+            <Button variant="primary" onClick={handleSubmit}>&#8594;</Button>
         </div>
     );
 }

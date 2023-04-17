@@ -34,7 +34,7 @@ function FESkills({ upSkill }) {
                     onChange={handleChange}
                 />)
             }
-            <Button variant="primary" onClick={handleClick}>Next</Button>
+            <Button variant="primary" onClick={handleClick}>&#8594;</Button>
         </div>
     );
 }
