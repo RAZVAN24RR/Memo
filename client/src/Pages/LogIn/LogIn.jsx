@@ -11,6 +11,7 @@ import './Login.css';
 // import NAV from '../../Components/Nav/NAV';
 import AuthService from '../../services/auth.service';
 import { useLocalStorage } from '../../hooks/useStorage';
+import { HttpStatusCode } from "axios";
 
 const LogIn = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
@@ -27,13 +28,20 @@ const LogIn = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    AuthService.login(email, password).then((_jwt) => {
-      if (_jwt) {
-        setJwt(_jwt);
-        window.location = `/home`;
-      } else {
-        alert('failed to login!');
+    AuthService.login(email, password).then(({ _jwt = '', code, error }) => {
+      if (code === HttpStatusCode.Unauthorized) {
+        const wrong = error.endsWith('EMAIL') ? 'email' : 'password';
+        alert(`Wrong ${wrong}!`);
+        return;
+      } else if (code !== HttpStatusCode.Ok) {
+        alert('Smth went wrong!');
+        return;
       }
+      setJwt(_jwt);
+      window.location.reload();
+    }, err => {
+        console.error(err);
+        alert('Server error!!!!');
     });
   };
 

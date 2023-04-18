@@ -4,17 +4,15 @@ const User = require('../models/UserModel');
 
 const login = async ({ email, password }) => {
     const user = await User.findOne({ email });
-
     if (!user) {
-      return res.status(401).json({ error: 'Invalid username an password.' });
+      return { error: 'WRONG_EMAIL' };
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    console.log(isPasswordValid);
     if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid username or password.' });
+      return { error: 'WRONG_PASSWORD' };
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-    return token;
+    return { token };
 }
 
 const LogInService = {
