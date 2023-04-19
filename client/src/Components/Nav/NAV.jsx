@@ -32,6 +32,10 @@ const NAV = (props) => {
     // window.location.reload();
   }, [jwt]);
   console.log(window.location.pathname.split('/')[1]);
+  if (!window.location.pathname.split('/')[1]) {
+    return null;
+  }
+
   if (jwt === undefined) {
     return (
       <>

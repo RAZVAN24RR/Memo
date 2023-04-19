@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useLocalStorage} from '../../hooks/useStorage';
-import { useNavigate, useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { Circles } from  'react-loader-spinner'
@@ -21,7 +21,7 @@ const techStackHelper = techStack => {
 }
 
 function Profile(props) {
-  const [jwt] = useLocalStorage('jwt');
+  const [jwt, , removeJwt] = useLocalStorage('jwt');
   const [data, setData] = useState(null);
   const [xp, setXp] = useState(null);
   const [role, setRole] = useState('');
@@ -29,6 +29,9 @@ function Profile(props) {
   const { userId } = useParams();
 
   useEffect(() => {
+    if (!jwt) {
+        return;
+    }
     if (userId === 'me' && jwt) {
       navigate(`/profile/${jwt_decode(jwt).userId}`);
       return;
@@ -60,8 +63,17 @@ function Profile(props) {
 
 
   if (!jwt) {
-    navigate('/login');
-    return null;
+    return <Navigate to={'/'}/>;
+  }
+
+  const handleDel = event => {
+    UserService.deleteUser(userId).then(res => {
+        removeJwt();
+        window.location.reload()
+    }).catch(err => {
+        console.error(err);
+        alert('error!')
+    })
   }
 
   if (data == null) {
@@ -100,6 +112,9 @@ function Profile(props) {
         </p>
         <Button variant="primary" size="lg" onClick={() => navigate('/skills')}>
         Update Skills
+        </Button>
+        <Button onClick={handleDel} variant='danger' size='lg'>
+            Delete
         </Button>
       </div>
     </div>

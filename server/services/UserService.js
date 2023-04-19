@@ -31,11 +31,16 @@ const updateUserSkills = async (id, data) => {
     });
 }
 
+const deleteUser = async targetId => {
+    await User.deleteOne({ _id: targetId });
+}
+
 const UserService = {
     getAllUsers,
     getUser,
     createUser,
-    updateUserSkills
+    updateUserSkills,
+    deleteUser,
 }
 
 module.exports = UserService;

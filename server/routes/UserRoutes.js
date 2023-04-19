@@ -12,6 +12,7 @@ router
 router
   .route('/:id')
   .get(UserController.getUser)
+router.delete('/:id', AuthMiddleware.loggedIn, UserController.deleteUser)
 router.patch('/', AuthMiddleware.loggedIn, UserController.updateUserSkills);
 
 module.exports = router;

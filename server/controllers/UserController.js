@@ -47,3 +47,17 @@ exports.updateUserSkills = async (req, res) => {
     res.status(500).end();
   }
 };
+exports.deleteUser = async (req, res) => {
+    try {        
+        if (String(res.locals.user._id) === req.params.id || res.locals.user.years >= 1) {
+            await UserService.deleteUser(req.params.id);
+            res.status(204).send('OK');
+            return;
+        }
+        
+        res.status(401).end();
+    } catch(err) {
+        console.log(err);
+        res.status(500).end();
+    }
+}
