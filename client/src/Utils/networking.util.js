@@ -1,8 +1,7 @@
 import axios from "axios";
 
-export const host = 'localhost';
-export const hostWithPort = `${host}:8000`;
-export const baseHttpURL = `http://${hostWithPort}/api/v1`;
+export const host = process.env.REACT_APP_SV_ADR;
+export const baseHttpURL = `http://${host}/api/v1`;
 export const baseURLPref = `${baseHttpURL}`;
 const timeout = 30000e3;
 
