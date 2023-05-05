@@ -47,7 +47,7 @@
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-top: 30px solid orange;
+  border-top: 30px solid #ffa500;
   animation: pulse 1s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   margin-left: auto;
   margin-right: auto;
@@ -84,6 +84,21 @@
   margin-top: 10vh;
   border-top: 3px solid orange;
   border-radius: 10px 10px;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-people {
+  width: 508px;
+  height: 367px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10vw;
+  border: 3px solid orange;
+  border-left: 0;
+  border-radius: 20px;
 }
 @keyframes typing1 {
   from {
@@ -134,4 +149,4 @@
       width: 50%;
     }
   }
-} ;
+}

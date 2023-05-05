@@ -3,8 +3,14 @@ import React from 'react';
 import { useCallback } from 'react';
 import Particles from 'react-particles';
 import { loadFull } from 'tsparticles';
-//Router Imports
-// import { useNavigate } from 'react-router-dom';
+
+import NAV from '../../Components/Nav/NAV';
+
+//ASSETS Imports
+import PeopleImg1 from '../../assets/People1.png';
+import PeopleImg2 from '../../assets/People2.png';
+import PeopleImg3 from '../../assets/People3.png';
+//ASSETS Imports End
 
 //CSS Imports
 import './PresentationPage.css';
@@ -81,33 +87,37 @@ const PresentationPage = () => {
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }, []);
-
   const particlesLoaded = useCallback(async (container) => {
     await console.log(container);
   }, []);
   return (
     <>
-      <div className="Pres">
-        <Container fluid="md">
-          <Row>
-            <h1 className="Pres-title">We are all connected!</h1>
-          </Row>
+      <div className="row">
+        <div className="Pres col-md-8">
+          <Container fluid="md">
+            <Row>
+              <h1 className="Pres-title">We are all connected!</h1>
+            </Row>
 
-          <div className="Pres-section">
-            <i class="arrow-down"></i>
-            <h2 className="Pres-titleh2">Already an account?</h2>
-            <div className="Pres-btns">
-              <Button href="/SignUp" variant="primary">
-                SignUp
-              </Button>
-              <Button href="/LogIn" variant="outline-primary">
-                LogIn
-              </Button>
+            <div className="Pres-section">
+              <i class="arrow-down"></i>
+              <h2 className="Pres-titleh2">Already an account?</h2>
+              <div className="Pres-btns">
+                <Button href="/SignUp" variant="primary">
+                  SignUp
+                </Button>
+                <Button href="/LogIn" variant="outline-primary">
+                  LogIn
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="Pres-line"></div>
-          <div className="Line-Bottom"></div>
-        </Container>
+            <div className="Pres-line"></div>
+            <div className="Line-Bottom"></div>
+          </Container>
+        </div>
+        <div className="img col-md-4">
+          <img className="img-people" src={PeopleImg1} alt="img-people" />
+        </div>
       </div>
       <Particles
         id="tsparticles"

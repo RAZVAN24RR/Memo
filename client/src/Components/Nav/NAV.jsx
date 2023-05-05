@@ -32,10 +32,9 @@ const NAV = (props) => {
     // window.location.reload();
   }, [jwt]);
   console.log(window.location.pathname.split('/')[1]);
-  if (!window.location.pathname.split('/')[1]) {
-    return null;
-  }
-
+  // if (!window.location.pathname.split('/')[1]) {
+  //   return null;
+  // }
   if (jwt === undefined) {
     return (
       <>
@@ -99,9 +98,40 @@ const NAV = (props) => {
           <Nav.Item style={{ display: 'flex' }} className="align-items-center">
             <Nav.Link href={`/home`}>Home</Nav.Link>
           </Nav.Item>
+          <Nav.Item
+            style={{ display: 'flex' }}
+            className="align-items-center"
+            onClick={handleLogOut}
+          >
+            <Nav.Link href="/">Logout</Nav.Link>
+          </Nav.Item>
         </Nav>
       </>
     );
   }
+  return (
+    <>
+      <Nav className="NAV" fluid="md">
+        <Nav.Item>
+          <a href="http://localhost:3000/home">
+            <img className="image-nav" src={LOGO} alt="LOGO" />
+          </a>
+        </Nav.Item>
+        <div className="alignRight">{data.name}</div>
+        <Nav.Item style={{ display: 'flex' }} className="align-items-center">
+          <Nav.Link href={`http://localhost:3000/profile/${data._id}`}>
+            Profile
+          </Nav.Link>
+          <Nav.Item
+            style={{ display: 'flex' }}
+            className="align-items-center"
+            onClick={handleLogOut}
+          >
+            <Nav.Link href="/">Logout</Nav.Link>
+          </Nav.Item>
+        </Nav.Item>
+      </Nav>
+    </>
+  );
 };
 export default NAV;
