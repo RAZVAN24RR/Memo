@@ -1,11 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-.Profile {
-  padding-top: 2.5vw;
-  width: 60%;
-  height: 60vh;
+.Profile-cont {
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+.Profile {
+  padding-top: 2.5vw;
+
+  height: 60vh;
+  margin-left: auto;
+  margin-right: 20vw;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
   font-family: 'Roboto', sans-serif;
+}
+
+.Profile-name {
+  width: 500px;
+  margin-bottom: 5vh;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #282828;
+  letter-spacing: 2px;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  border-left: 0.15em solid #0d6efd;
+  border-radius: 0 10px 10px 0;
+  padding: 10px;
+  white-space: nowrap;
+  font-size: 3rem;
+  animation: typing-Profile-name 1s steps(40) forwards;
+}
+.Profile-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-img-img {
+  width: 501px !important;
+  height: 347px !important;
+}
+
+.Profile-p {
+  color: #282828;
+  font-size: 24px;
+  white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
+  border-left: 4px solid #0d6efd;
+}
+.span-b {
+  color: #0d6efd;
+  font-family: 'Roboto', sans-serif;
+}
+.span-o {
+  border-bottom: 2px solid orange;
+  font-family: 'Roboto', sans-serif;
+  text-transform: lowercase;
+  font-size: 20px;
+}
+.Profile-btns {
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+.btn-update {
+  padding: 10px !important;
+}
+.btn-del {
+  margin-left: 20px;
+  background-color: orange !important;
+  border: none !important;
+}
+
+@keyframes typing-Profile-name {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 600px;
+  }
 }
 
 /* Pentru mobile , e un bug  */

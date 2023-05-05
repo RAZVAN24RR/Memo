@@ -5,6 +5,9 @@ import UserService from '../../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { Circles } from 'react-loader-spinner';
 
+//ASSETS
+import ProfileImg from '../../assets/People2.png';
+
 //CSS
 import './Profile.css';
 import Button from 'react-bootstrap/esm/Button';
@@ -94,35 +97,63 @@ function Profile(props) {
   }
 
   return (
-    <div>
-      <div className="Profile" fluid="md">
-        <h1>{data.name}'s profile</h1>
-        <p>
-          Rank: <b>{role}</b>
-        </p>
-        <p>
-          Xp in company: <b>{xp}</b>
-        </p>
-        <p>
-          Tech-stack: <b>{techStackHelper(printHelper(data.techStack))}</b>
-        </p>
-        <p>
-          Communication-style: <b>{printHelper(data.comStyle)}</b>
-        </p>
-        <p>
-          Frameworks: <b>{printHelper(data?.frameworks?.join(', '))}</b>
-        </p>
-        <p>
-          Years of experience: <b>{printHelper(data.yearsOfExperience)}</b>
-        </p>
-        <Button variant="primary" size="lg" onClick={() => navigate('/skills')}>
-          Update Skills
-        </Button>
-        <Button onClick={handleDel} variant="danger" size="lg">
-          Delete
-        </Button>
+    <>
+      <div className="Profile-cont row">
+        <div className="Profile col-md-4" fluid="md">
+          <h1 className="Profile-name">{data.name}'s profile</h1>
+          <p className="Profile-p">
+            <b>--Rank:</b> <span className="span-b">{role}</span>
+          </p>
+          <p className="Profile-p">
+            ---Xp in company: <span className="span-o">{xp}</span>
+          </p>
+          <p className="Profile-p">
+            ---Tech-stack:{' '}
+            <span className="span-o">
+              {techStackHelper(printHelper(data.techStack))}
+            </span>
+          </p>
+          <p className="Profile-p">
+            ---Communication-style:{' '}
+            <span className="span-o">{printHelper(data.comStyle)}</span>
+          </p>
+          <p className="Profile-p">
+            ---Frameworks:{' '}
+            <span className="span-o">
+              {printHelper(data?.frameworks?.join(', '))}
+            </span>
+          </p>
+          <p className="Profile-p">
+            ---Years of experience:{' '}
+            <span className="span-o">
+              {printHelper(data.yearsOfExperience)}
+            </span>
+          </p>
+          <div className="Profile-btns">
+            <Button
+              className="btn-update"
+              variant="primary"
+              size="lg"
+              onClick={() => navigate('/skills')}
+            >
+              Update Skills
+            </Button>
+            <Button
+              onClick={handleDel}
+              className="btn-del"
+              variant="danger"
+              size="lg"
+            >
+              Delete
+            </Button>
+            <div className="Line-Bottom"></div>
+          </div>
+        </div>
+        <div className="Profile-img col-md-2">
+          <img className="profile-img-img" src={ProfileImg} alt="profile-img" />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
