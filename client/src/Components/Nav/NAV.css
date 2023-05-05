@@ -27,6 +27,12 @@
   justify-content: center;
   align-items: center;
   margin-left: auto;
+
+  padding: 10px;
   font-family: 'Roboto', sans-serif;
   /* margin-right: 5vw; */
+}
+.NAME-PROFILE {
+  border-top: 2px solid orange;
+  border-radius: 10px;
 }
