@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+.Skills-Container {
+  width: 30%;
+  height: 50vh;
+  margin-bottom: 5vh;
+  margin-top: 15vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Title-Skills {
+  width: 500px;
+  margin-bottom: 5vh;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #282828;
+  letter-spacing: 2px;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  border-left: 0.15em solid #0d6efd;
+  border-radius: 0 10px 10px 0;
+  padding: 10px;
+  white-space: nowrap;
+  font-size: 3rem;
+}
+.Profile-p {
+  color: #282828;
+  font-size: 24px;
+  white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
+  border-left: 4px solid #0d6efd;
+}
+input[type='radio']:checked {
+  /* Set the color of the radio button when it's selected */
+  background-color: orange;
+  border-color: orange;
+}
+#btn-left {
+  background-color: orange;
+  border: orange;
+  width: 50px;
+  font-size: 22px;
+  margin-top: -112px;
+}
+#btn-right {
+  width: 50px;
+  font-size: 20px;
+  margin: 20px;
+  margin-left: 90px;
+}
