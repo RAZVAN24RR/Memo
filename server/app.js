@@ -14,6 +14,7 @@ const User = require('./models/UserModel');
 //Routers
 const userRouter = require('./routes/UserRoutes');
 const loginRouter = require('./routes/LogInRouter');
+const teamRouter = require('./routes/TeamRouter');
 
 const app = express();
 
@@ -42,5 +43,5 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/LogIn', loginRouter);
-
+app.use('/api/v1/teams', teamRouter);
 module.exports = app;
