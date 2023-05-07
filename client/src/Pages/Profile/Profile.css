@@ -79,7 +79,9 @@
   background-color: orange !important;
   border: none !important;
 }
-
+.profile-img-img {
+  z-index: -1;
+}
 @keyframes typing-Profile-name {
   from {
     width: 0;
