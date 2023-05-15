@@ -150,7 +150,7 @@ function Profile(props) {
           </div>
         </div>
         <div className="Profile-img col-md-2">
-          <img className="profile-img-img" src={ProfileImg} alt="profile-img" />
+          {/* <img className="profile-img-img" src={ProfileImg} alt="profile-img" /> */}
         </div>
       </div>
     </>

@@ -17,7 +17,7 @@ import { useLocalStorage } from '../../hooks/useStorage';
 import UserService from '../../services/user.service';
 
 const NAV = (props) => {
-  const [jwt, , removeJwt] = useLocalStorage('jwt');
+  const [jwt, removeJwt] = useLocalStorage('jwt');
   const [data, setData] = useState({});
 
   const handleLogOut = () => {
@@ -96,7 +96,7 @@ const NAV = (props) => {
           </Nav.Item>
           <div className="alignRight NAME-PROFILE">{data.name}</div>
           <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`/home`}>Home</Nav.Link>
+            <Nav.Link href={`/home`}>DASHBOARD</Nav.Link>
           </Nav.Item>
           <Nav.Item
             style={{ display: 'flex' }}

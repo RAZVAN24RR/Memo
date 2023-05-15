@@ -5,6 +5,7 @@ import Profile from './Pages/Profile/Profile';
 import Home from './Pages/Home/Home';
 import Skills from './Pages/Skills/Skills';
 import TeamDetails from './Pages/TeamDetails/TeamDetails';
+import AddTeam from './Pages/AddTeam/AddTeam';
 
 const ROUTES = [
   {
@@ -34,6 +35,10 @@ const ROUTES = [
   {
     path: '/skills',
     element: <Skills />,
+  },
+  {
+    path: '/addTeam',
+    element: <AddTeam />,
   },
 ];
 
