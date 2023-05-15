@@ -9,10 +9,7 @@ router
   .get(UserController.getAllUsers)
   .post(UserController.createUser);
 
-router
-  .route('/:id')
-  .get(UserController.getUser)
-router.delete('/:id', AuthMiddleware.loggedIn, UserController.deleteUser)
-router.patch('/', AuthMiddleware.loggedIn, UserController.updateUserSkills);
-
+router.route('/:id').get(UserController.getUser);
+router.delete('/:id', AuthMiddleware.isloggedIn, UserController.deleteUser);
+router.patch('/', AuthMiddleware.isloggedIn, UserController.updateUserSkills);
 module.exports = router;

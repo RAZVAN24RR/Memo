@@ -38,7 +38,7 @@ exports.createTeam = async (req, res) => {
 };
 exports.getTeam = async (req, res) => {
   try {
-    const team = TeamService.getTeam(req.params.id);
+    const team = await TeamService.getTeam(req.params.id);
     res.status(200).json({
       status: 'success',
       data: {

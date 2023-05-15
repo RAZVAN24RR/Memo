@@ -2,11 +2,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/UserModel');
 const UserService = require('../services/UserService');
 
-const isloggedIn = async (req, res, next) => {
+const isManager = async (req, res, next) => {
   try {
-    let token = JSON.parse(req.headers.authorization);
+    const token = JSON.parse(req.headers.authorization);
     const decodedJwt = jwt.verify(token, process.env.JWT_SECRET);
     const user = await UserService.getUser(decodedJwt.userId);
+    console.log(user);
+    if (user.isManager !== true) res.status(401).send('AUTH_ERR');
   } catch (error) {
     console.error(error);
     res.status(401).send('AUTH_ERR');
@@ -15,8 +17,8 @@ const isloggedIn = async (req, res, next) => {
   next();
 };
 
-const AuthMiddleware = {
-  isloggedIn
+const AdminMiddleware = {
+  isManager
 };
 
-module.exports = AuthMiddleware;
+module.exports = AdminMiddleware;

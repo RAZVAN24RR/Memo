@@ -1,13 +1,18 @@
 const express = require('express');
 
 const TeamController = require('../controllers/TeamController');
-
+const AdminMiddleware = require('../middlewares/isAdmin.middleware');
+const AuthMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 router
   .route('/')
-  .get(TeamController.getAllTeams)
-  .post(TeamController.createTeam);
+  .get(AuthMiddleware.isloggedIn, TeamController.getAllTeams)
+  .post(
+    AdminMiddleware.isManager,
+    AdminMiddleware.isManager,
+    TeamController.createTeam
+  );
 
 router
   .route('/:id')
