@@ -4,12 +4,15 @@ import { useParams } from 'react-router';
 import TeamService from '../../services/teams.service';
 import { Circles } from 'react-loader-spinner';
 import './TeamDetails.css';
+import UserService from '../../services/user.service';
+import { useNavigate } from 'react-router';
 
 const TeamDetails = () => {
   const { teamId } = useParams();
   const [dataTeam, setDataTeam] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
-    console.log('effect');
+    // console.log('effect');
     TeamService.getTeam(teamId).then((_data) => {
       setDataTeam(_data.data.data.team);
     });
@@ -27,17 +30,32 @@ const TeamDetails = () => {
       />
     );
   }
-  console.log(dataTeam);
+  const hadleTeamMember = async (name) => {
+    console.log(name);
+    UserService.getUserByName(name).then((_data) => {
+      navigate(`/profile/${_data._id}`);
+    });
+  };
+  // console.log(dataTeam);
   return (
     <>
-      <h3>Team</h3>
-      {dataTeam.ProjectName}
-      <h3>Participants</h3>
-      {dataTeam.Members.map((e) => {
-        return e + '-';
-      })}
-      <h3>Description</h3>
-      {dataTeam.Description}
+      <div className="team_cont">
+        <div className="team">
+          <h3 className="team_title_section">Team</h3>
+          {dataTeam.ProjectName}
+          <h3 className="team_title_section">Participants</h3>
+          {dataTeam.Members.map((e) => {
+            return (
+              <p onClick={() => hadleTeamMember(e)} className="team_member">
+                {e}
+              </p>
+            );
+          })}
+          <u>doar pe raul merge sa dai click momentan </u>
+          <h3 className="team_title_section">Description</h3>
+          {dataTeam.Description}
+        </div>
+      </div>
     </>
   );
 };

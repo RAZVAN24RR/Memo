@@ -15,7 +15,7 @@ const User = require('./models/UserModel');
 const userRouter = require('./routes/UserRoutes');
 const loginRouter = require('./routes/LogInRouter');
 const teamRouter = require('./routes/TeamRouter');
-
+const userPrivateRouter = require('./routes/UserPrivateRouter');
 const app = express();
 
 // Middlewares
@@ -44,4 +44,5 @@ app.use((req, res, next) => {
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/LogIn', loginRouter);
 app.use('/api/v1/teams', teamRouter);
+app.use('/api/v1/user', userPrivateRouter);
 module.exports = app;

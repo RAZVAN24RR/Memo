@@ -86,7 +86,6 @@ const Home = () => {
             )}
           </div>
         </div>
-
         {teams.map((e) => {
           return (
             <div>

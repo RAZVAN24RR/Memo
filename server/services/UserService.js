@@ -13,7 +13,14 @@ const getUser = async id => {
   const { months, years } = convertMillisecondsToYearsAndMonths(diff);
   return { ...user, months, years };
 };
-
+const getUserByName = async name => {
+  const user = await User.find({ name: `${name}` });
+  const date = new Date(user.createdAt);
+  console.log(user);
+  const diff = Date.now() - date.getTime();
+  const { months, years } = convertMillisecondsToYearsAndMonths(diff);
+  return { ...user, months, years };
+};
 const createUser = async ({ name, email, password }) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -40,7 +47,8 @@ const UserService = {
   getUser,
   createUser,
   updateUserSkills,
-  deleteUser
+  deleteUser,
+  getUserByName
 };
 
 module.exports = UserService;

@@ -1,4 +1,7 @@
-import { axiosAuthInstanceToAPI, axiosInstanceToAPI } from '../Utils/networking.util';
+import {
+  axiosAuthInstanceToAPI,
+  axiosInstanceToAPI,
+} from '../Utils/networking.util';
 
 const register = async (name, email, password) => {
   const res = await axiosInstanceToAPI.post('/users', {
@@ -12,15 +15,18 @@ const register = async (name, email, password) => {
 const profile = async (userId) => {
   return (await axiosInstanceToAPI.get(`/users/${userId}`)).data.user;
 };
-
-const deleteUser = async userId => {
-    return await axiosAuthInstanceToAPI.delete(`/users/${userId}`);
-}
+const getUserByName = async (name) => {
+  return (await axiosInstanceToAPI.get(`/user/${name}`)).data.user[0];
+};
+const deleteUser = async (userId) => {
+  return await axiosAuthInstanceToAPI.delete(`/users/${userId}`);
+};
 
 const UserService = {
   register,
   profile,
   deleteUser,
+  getUserByName,
 };
 
 export default UserService;

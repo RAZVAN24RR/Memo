@@ -29,6 +29,19 @@ exports.getUser = async (req, res) => {
     res.status(400).end();
   }
 };
+exports.getUserByName = async (req, res) => {
+  try {
+    const { name } = req.params;
+    console.log(name);
+    const user = await UserService.getUserByName(name);
+    res.status(200).json({
+      status: 'success',
+      user
+    });
+  } catch (err) {
+    res.status(400).end();
+  }
+};
 exports.createUser = async (req, res) => {
   try {
     await UserService.createUser(req.body);

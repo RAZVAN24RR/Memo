@@ -11,5 +11,6 @@ router
 
 router.route('/:id').get(UserController.getUser);
 router.delete('/:id', AuthMiddleware.isloggedIn, UserController.deleteUser);
+
 router.patch('/', AuthMiddleware.isloggedIn, UserController.updateUserSkills);
 module.exports = router;
