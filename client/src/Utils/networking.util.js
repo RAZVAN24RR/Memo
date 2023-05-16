@@ -8,7 +8,6 @@ const timeout = 30000e3;
 export const axiosInstanceToAPI = axios.create({
   baseURL: baseURLPref,
   timeout,
-  jwt: localStorage.getItem('jwt'),
 });
 
 export const axiosAuthInstanceToAPI = axios.create({

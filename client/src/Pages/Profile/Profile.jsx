@@ -30,37 +30,61 @@ function Profile(props) {
   const [role, setRole] = useState('');
   const navigate = useNavigate();
   const { userId } = useParams();
-
+  const [name, setName] = useState('Raul');
   useEffect(() => {
     if (!jwt) {
       return;
     }
+
     if (userId === 'me' && jwt) {
       navigate(`/profile/${jwt_decode(jwt).userId}`);
       return;
     }
-
-    UserService.profile(userId).then(
-      (_data) => {
-        console.log(_data);
-        if (_data.isManager) {
-          setRole('manager');
-        } else if (_data.years >= 1) {
-          setRole('old');
-        } else {
-          setRole('new');
+    if (userId === jwt_decode(jwt).userId) {
+      UserService.profile(userId).then(
+        (_data) => {
+          console.log(_data);
+          if (_data.isManager) {
+            setRole('manager');
+          } else if (_data.years >= 1) {
+            setRole('old');
+          } else {
+            setRole('new');
+          }
+          if (_data.months === 0) {
+            setXp('< 1 month');
+          } else {
+            setXp(`${_data.years} years, ${_data.months} months`);
+          }
+          setData(_data);
+        },
+        (err) => {
+          navigate('/home');
         }
-        if (_data.months === 0) {
-          setXp('< 1 month');
-        } else {
-          setXp(`${_data.years} years, ${_data.months} months`);
+      );
+    } else {
+      UserService.getUserByName(name).then(
+        (_data) => {
+          console.log(_data);
+          if (_data.isManager) {
+            setRole('manager');
+          } else if (_data.years >= 1) {
+            setRole('old');
+          } else {
+            setRole('new');
+          }
+          if (_data.months === 0) {
+            setXp('< 1 month');
+          } else {
+            setXp(`${_data.years} years, ${_data.months} months`);
+          }
+          setData(_data);
+        },
+        (err) => {
+          navigate('/home');
         }
-        setData(_data);
-      },
-      (err) => {
-        navigate('/home');
-      }
-    );
+      );
+    }
   }, [jwt, navigate, userId]);
 
   if (!jwt) {
@@ -129,25 +153,29 @@ function Profile(props) {
               {printHelper(data.yearsOfExperience)}
             </span>
           </p>
-          <div className="Profile-btns">
-            <Button
-              className="btn-update"
-              variant="primary"
-              size="lg"
-              onClick={() => navigate('/skills')}
-            >
-              Update Skills
-            </Button>
-            <Button
-              onClick={handleDel}
-              className="btn-del"
-              variant="danger"
-              size="lg"
-            >
-              Delete
-            </Button>
-            <div className="Line-Bottom"></div>
-          </div>
+          {userId === jwt_decode(jwt).userId ? (
+            <div className="Profile-btns">
+              <Button
+                className="btn-update"
+                variant="primary"
+                size="lg"
+                onClick={() => navigate('/skills')}
+              >
+                Update Skills
+              </Button>
+              <Button
+                onClick={handleDel}
+                className="btn-del"
+                variant="danger"
+                size="lg"
+              >
+                Delete
+              </Button>
+              <div className="Line-Bottom"></div>
+            </div>
+          ) : (
+            console.log("You can't modify the skills")
+          )}
         </div>
         <div className="Profile-img col-md-2">
           {/* <img className="profile-img-img" src={ProfileImg} alt="profile-img" /> */}

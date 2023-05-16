@@ -6,9 +6,18 @@ const getAllTeams = async () => {
 const getTeam = async (id) => {
   return await axiosInstanceToAPI(`/teams/${id}`);
 };
+const createTeam = async (ProjectName, Description, Members) => {
+  const res = await axiosInstanceToAPI.post('/teams', {
+    ProjectName,
+    Description,
+    Members,
+  });
+  return res;
+};
 const TeamService = {
   getAllTeams,
   getTeam,
+  createTeam,
 };
 
 export default TeamService;

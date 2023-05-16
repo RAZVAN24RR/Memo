@@ -52,7 +52,7 @@ const Home = () => {
   };
 
   // console.log(teams);
-  if (user === null) {
+  if ((user === null && teams === null) || teams === null || user === null) {
     return (
       <Circles
         height="800"
