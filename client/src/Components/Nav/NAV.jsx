@@ -44,18 +44,33 @@ const NAV = (props) => {
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
-          <div className="alignRight">
-            {props.elements.map((element) => {
-              return (
-                <Nav.Item
-                  style={{ display: 'flex' }}
-                  className="align-items-center"
-                  key={element.key}
-                >
-                  <Nav.Link href={element.path}>{element.name}</Nav.Link>
-                </Nav.Item>
-              );
-            })}
+          <div className="menu_items">
+            <div className="alignRight">
+              {props.elements.map((element) => {
+                return (
+                  <Nav.Item
+                    style={{ display: 'flex' }}
+                    className="align-items-center"
+                    key={element.key}
+                  >
+                    <Nav.Link href={element.path}>{element.name}</Nav.Link>
+                  </Nav.Item>
+                );
+              })}
+            </div>
+            <div className="menu_icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M4 18q-.425 0-.713-.288T3 17q0-.425.288-.713T4 16h16q.425 0 .713.288T21 17q0 .425-.288.713T20 18H4Zm0-5q-.425 0-.713-.288T3 12q0-.425.288-.713T4 11h16q.425 0 .713.288T21 12q0 .425-.288.713T20 13H4Zm0-5q-.425 0-.713-.288T3 7q0-.425.288-.713T4 6h16q.425 0 .713.288T21 7q0 .425-.288.713T20 8H4Z"
+                />
+              </svg>
+            </div>
           </div>
         </Nav>
       </>
@@ -69,19 +84,37 @@ const NAV = (props) => {
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
-          <div className="alignRight NAME-PROFILE">{data.name}</div>
-          <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`http://localhost:3000/profile/${data._id}`}>
-              Profile
-            </Nav.Link>
+          <div className="menu_items">
+            <div className="alignRight NAME-PROFILE">{data.name}</div>
             <Nav.Item
               style={{ display: 'flex' }}
               className="align-items-center"
-              onClick={handleLogOut}
             >
-              <Nav.Link href="/">Logout</Nav.Link>
+              <Nav.Link href={`http://localhost:3000/profile/${data._id}`}>
+                Profile
+              </Nav.Link>
+              <Nav.Item
+                style={{ display: 'flex' }}
+                className="align-items-center"
+                onClick={handleLogOut}
+              >
+                <Nav.Link href="/">Logout</Nav.Link>
+              </Nav.Item>
             </Nav.Item>
-          </Nav.Item>
+          </div>
+          <div className="menu_icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M4 18q-.425 0-.713-.288T3 17q0-.425.288-.713T4 16h16q.425 0 .713.288T21 17q0 .425-.288.713T20 18H4Zm0-5q-.425 0-.713-.288T3 12q0-.425.288-.713T4 11h16q.425 0 .713.288T21 12q0 .425-.288.713T20 13H4Zm0-5q-.425 0-.713-.288T3 7q0-.425.288-.713T4 6h16q.425 0 .713.288T21 7q0 .425-.288.713T20 8H4Z"
+              />
+            </svg>
+          </div>
         </Nav>
       </>
     );
@@ -94,17 +127,35 @@ const NAV = (props) => {
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
-          <div className="alignRight NAME-PROFILE">{data.name}</div>
-          <Nav.Item style={{ display: 'flex' }} className="align-items-center">
-            <Nav.Link href={`/home`}>DASHBOARD</Nav.Link>
-          </Nav.Item>
-          <Nav.Item
-            style={{ display: 'flex' }}
-            className="align-items-center"
-            onClick={handleLogOut}
-          >
-            <Nav.Link href="/">Logout</Nav.Link>
-          </Nav.Item>
+          <div className="menu_items">
+            <div className="alignRight NAME-PROFILE">{data.name}</div>
+            <Nav.Item
+              style={{ display: 'flex' }}
+              className="align-items-center"
+            >
+              <Nav.Link href={`/home`}>DASHBOARD</Nav.Link>
+            </Nav.Item>
+            <Nav.Item
+              style={{ display: 'flex' }}
+              className="align-items-center"
+              onClick={handleLogOut}
+            >
+              <Nav.Link href="/">Logout</Nav.Link>
+            </Nav.Item>
+          </div>
+          <div className="menu_icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M4 18q-.425 0-.713-.288T3 17q0-.425.288-.713T4 16h16q.425 0 .713.288T21 17q0 .425-.288.713T20 18H4Zm0-5q-.425 0-.713-.288T3 12q0-.425.288-.713T4 11h16q.425 0 .713.288T21 12q0 .425-.288.713T20 13H4Zm0-5q-.425 0-.713-.288T3 7q0-.425.288-.713T4 6h16q.425 0 .713.288T21 7q0 .425-.288.713T20 8H4Z"
+              />
+            </svg>
+          </div>
         </Nav>
       </>
     );

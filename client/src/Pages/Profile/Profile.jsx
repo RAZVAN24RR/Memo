@@ -122,8 +122,8 @@ function Profile(props) {
 
   return (
     <>
-      <div className="Profile-cont row">
-        <div className="Profile col-md-4" fluid="md">
+      <div className="Profile-cont ">
+        <div className="Profile " fluid="md">
           <h1 className="Profile-name">{data.name}'s profile</h1>
           <p className="Profile-p">
             <b>--Rank:</b> <span className="span-b">{role}</span>

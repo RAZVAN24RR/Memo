@@ -1,13 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+.home_container {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.navs_items {
+  border-radius: 3rem;
+}
 .Home {
   padding-top: 2.5vw;
-  width: 60%;
+  width: 100%;
   height: 60vh;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
 }
 
+.nav_active_link {
+  margin-top: 3rem;
+  color: #0d6efd;
+}
+.Dashboard_name {
+  width: 50%;
+  margin-bottom: 5vh;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #282828;
+  letter-spacing: 2px;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  border-left: 0.15em solid #0d6efd;
+  border-radius: 0 10px 10px 0;
+  padding: 10px;
+  white-space: nowrap;
+  font-size: 3rem;
+  animation: typing-Profile-name 1s steps(40) forwards;
+  animation-duration: 1s;
+}
 /* Pentru mobile , e un bug  */
 @media only screen and (max-width: 500px) {
   .Profile {

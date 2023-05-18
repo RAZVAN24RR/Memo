@@ -5,22 +5,27 @@
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
+  justify-content: space-between;
 }
-
+.menu_icon {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: none;
+  color: #0d6efd;
+}
+.menu_items {
+  display: block;
+  display: flex;
+  flex-direction: row;
+}
 .image-nav {
   width: 133px;
   height: 56px;
 }
 
 /* Pentru mobile , e un bug  */
-@media only screen and (max-width: 500px) {
-  .NAV {
-    width: 100%;
-  }
-  .alignRight {
-    margin-right: 2vw;
-  }
-}
 
 .alignRight {
   display: flex;
@@ -35,4 +40,26 @@
 .NAME-PROFILE {
   border-top: 2px solid orange;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .NAV {
+    padding-top: 6.5vw;
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 25px;
+  }
+  .menu_items {
+    display: none;
+  }
+  .menu_icon {
+    display: block;
+  }
+  .menu_icon > svg {
+    font-size: 2rem;
+  }
 }

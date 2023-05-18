@@ -2,6 +2,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import './index.css';
 //Components Imports
 import NAV from './Components/Nav/NAV';
 

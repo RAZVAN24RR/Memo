@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import UserService from '../../services/user.service';
 import { useLocalStorage } from '../../hooks/useStorage';
 import jwtDecode from 'jwt-decode';
+import Nav from 'react-bootstrap/Nav';
 //Page resolved bug
 
 const Home = () => {
@@ -68,33 +69,40 @@ const Home = () => {
 
   return (
     <>
-      <div className="Home">
-        <div className="row">
-          <div className="col-md-6">
-            <h1>DASHBOARD</h1>
-            <h4 style={{ color: '#0d6efd' }}>
-              {user.isManager ? `${role}` : `${role} - ${xp}`}
-            </h4>
-          </div>
-          <div className="col-md-6">
-            {user.isManager ? (
-              <Button onClick={handleAddTeam} variant="outline-primary">
-                Add team
-              </Button>
-            ) : (
-              <Button variant="diabled">Add team</Button>
-            )}
+      <div className="home_container">
+        <div className="col-md-4 navs_items">
+          <Nav.Link className="nav_active_link">Teams</Nav.Link>
+          <Nav.Link href={`http://localhost:3000/chat`}>Chat</Nav.Link>
+          <Nav.Link href={`http://localhost:3000/chatBot`}>ChatBot</Nav.Link>
+        </div>
+        <div className="col-md-8">
+          <div className="Home">
+            <div className="row">
+              <div className="col-md-6">
+                <h1 className="Dashboard_name">DASHBOARD</h1>
+                <h4 style={{ color: '#0d6efd' }}>
+                  {user.isManager ? `${role}` : `${role} - ${xp}`}
+                </h4>
+                {user.isManager ? (
+                  <Button onClick={handleAddTeam} variant="outline-primary">
+                    Add team
+                  </Button>
+                ) : (
+                  <Button variant="diabled">Add team</Button>
+                )}
+              </div>
+            </div>
+            {teams.map((e) => {
+              return (
+                <div>
+                  <a onClick={() => handleClickTeam(e)}>
+                    <p style={{ cursor: 'pointer' }}>{e.ProjectName}</p>
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
-        {teams.map((e) => {
-          return (
-            <div>
-              <a onClick={() => handleClickTeam(e)}>
-                <p style={{ cursor: 'pointer' }}>{e.ProjectName}</p>
-              </a>
-            </div>
-          );
-        })}
       </div>
     </>
   );

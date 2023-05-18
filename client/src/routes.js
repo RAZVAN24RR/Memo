@@ -6,6 +6,8 @@ import Home from './Pages/Home/Home';
 import Skills from './Pages/Skills/Skills';
 import TeamDetails from './Pages/TeamDetails/TeamDetails';
 import AddTeam from './Pages/AddTeam/AddTeam';
+import Chat from './Pages/Chat/Chat';
+import ChatBot from './Pages/ChatBot/ChatBot';
 
 const ROUTES = [
   {
@@ -39,6 +41,14 @@ const ROUTES = [
   {
     path: '/addTeam',
     element: <AddTeam />,
+  },
+  {
+    path: '/chat',
+    element: <Chat />,
+  },
+  {
+    path: '/chatBot',
+    element: <ChatBot />,
   },
 ];
 

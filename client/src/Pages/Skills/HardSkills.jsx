@@ -29,8 +29,8 @@ function HardSkills({ upSkill }) {
   return (
     <div>
       hard
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="">
+      <Form className="form_hard_skills" onSubmit={handleSubmit}>
+        <Form.Group className="mb-3 width_200" controlId="">
           <Form.Label>
             {' '}
             <h4 className="Profile-p">--Experience:</h4>{' '}

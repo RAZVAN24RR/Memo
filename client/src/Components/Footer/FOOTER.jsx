@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-light container-fluid noscroll  ">
       <Container className="footer">
         <Row className="footer-row">
-          <div className="d-flex justify-content-between   ">
+          <div className="d-flex justify-content-between  row  ">
             <Col md={6}>
               <h5>
                 <b>About Us</b>
@@ -18,7 +18,7 @@ const Footer = () => {
                 choose us time and time again.
               </p>
             </Col>
-            <Col md={{ span: 5, offset: 3 }}>
+            <Col style={{ marginTop: '2rem' }} md={6}>
               <h5>
                 <b>Contact Us</b>
               </h5>

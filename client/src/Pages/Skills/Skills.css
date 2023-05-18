@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 .Skills-Container {
   width: 30%;
-  height: 50vh;
   margin-bottom: 5vh;
   margin-top: 15vh;
   margin-left: auto;
   margin-right: auto;
 }
 .Title-Skills {
-  width: 500px;
   margin-bottom: 5vh;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -19,7 +17,6 @@
   border-right: 0.15em solid orange;
   border-left: 0.15em solid #0d6efd;
   border-radius: 0 10px 10px 0;
-  padding: 10px;
   white-space: nowrap;
   font-size: 3rem;
 }
@@ -35,6 +32,12 @@ input[type='radio']:checked {
   background-color: orange;
   border-color: orange;
 }
+.form_hard_skills > input[type='text'] {
+  width: 100%;
+}
+.width_200 {
+  width: 100%;
+}
 #btn-left {
   background-color: orange;
   border: orange;
@@ -47,4 +50,17 @@ input[type='radio']:checked {
   font-size: 20px;
   margin: 20px;
   margin-left: 90px;
+}
+@media only screen and (max-width: 600px) {
+  .Skills-Container {
+    width: 50%;
+  }
+  .Skills-Container {
+    margin-top: 10vh;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Skills-Container {
+    width: 70%;
+  }
 }
