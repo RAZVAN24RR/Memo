@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 //Components Imports
 import NAV from './Components/Nav/NAV';
+import './Components/Nav/NAV.css';
 
 //Import Pages
 

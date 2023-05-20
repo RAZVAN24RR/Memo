@@ -6,6 +6,7 @@ import { Circles } from 'react-loader-spinner';
 import './TeamDetails.css';
 import UserService from '../../services/user.service';
 import { useNavigate } from 'react-router';
+import '../../Components/Nav/NAV.css';
 
 const TeamDetails = () => {
   const { teamId } = useParams();

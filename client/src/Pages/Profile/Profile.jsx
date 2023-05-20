@@ -11,6 +11,7 @@ import ProfileImg from '../../assets/People2.png';
 //CSS
 import './Profile.css';
 import Button from 'react-bootstrap/esm/Button';
+import '../../Components/Nav/NAV.css';
 
 const printHelper = (data) => {
   if (!data) {
