@@ -1,17 +1,16 @@
 //Classic Imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Navigate } from 'react-router';
 //CSS Imports
 import './Login.css';
 
-
 //Components Imports
 // import NAV from '../../Components/Nav/NAV';
 import AuthService from '../../services/auth.service';
 import { useLocalStorage } from '../../hooks/useStorage';
-import { HttpStatusCode } from "axios";
+import { HttpStatusCode } from 'axios';
 
 const LogIn = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
@@ -28,25 +27,28 @@ const LogIn = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    AuthService.login(email, password).then(({ _jwt = '', code, error }) => {
-      if (code === HttpStatusCode.Unauthorized) {
-        const wrong = error.endsWith('EMAIL') ? 'email' : 'password';
-        alert(`Wrong ${wrong}!`);
-        return;
-      } else if (code !== HttpStatusCode.Ok) {
-        alert('Smth went wrong!');
-        return;
-      }
-      setJwt(_jwt);
-      window.location.reload();
-    }, err => {
+    AuthService.login(email, password).then(
+      ({ _jwt = '', code, error }) => {
+        if (code === HttpStatusCode.Unauthorized) {
+          const wrong = error.endsWith('EMAIL') ? 'email' : 'password';
+          alert(`Wrong ${wrong}!`);
+          return;
+        } else if (code !== HttpStatusCode.Ok) {
+          alert('Smth went wrong!');
+          return;
+        }
+        setJwt(_jwt);
+        window.location.reload();
+      },
+      (err) => {
         console.error(err);
         alert('Server error!!!!');
-    });
+      }
+    );
   };
 
   if (jwt) {
-    return <Navigate to={'/profile/me'}/>;
+    return <Navigate to={'/home'} />;
   }
 
   return (
@@ -62,7 +64,6 @@ const LogIn = () => {
                 placeholder="Enter email"
                 onChange={handleEmail}
               />
-
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -82,6 +83,6 @@ const LogIn = () => {
         <div className="Log-line"></div>
       </div>
     </>
-  );//*/
+  ); //*/
 };
 export default LogIn;

@@ -21,3 +21,38 @@
   padding: 0.2rem;
   cursor: pointer;
 }
+@media only screen and (max-width: 750px) {
+  .team_cont {
+    width: 100%;
+    margin: 0 !important;
+    padding-left: 2rem;
+    padding-top: 30%;
+  }
+  .team_title_section {
+    font-size: 2rem;
+    margin-bottom: 3rem !important;
+  }
+  .team_member {
+    width: max-content;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+  }
+  .participants {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .des {
+    margin-bottom: 2rem !important;
+  }
+  .back {
+    width: 100%;
+  }
+  .back > svg {
+    margin-left: -1rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -51,16 +51,15 @@ input[type='radio']:checked {
   margin: 20px;
   margin-left: 90px;
 }
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 750px) {
   .Skills-Container {
-    width: 50%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0 !important;
   }
-  .Skills-Container {
-    margin-top: 10vh;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .Skills-Container {
-    width: 70%;
+  .Title-Skills {
+    padding-top: 50%;
   }
 }

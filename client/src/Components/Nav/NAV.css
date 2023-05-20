@@ -41,7 +41,7 @@
 .menu_items_active {
   display: absolute;
   width: 100vw;
-  height: 75vh;
+  height: 78vh;
 
   flex-direction: column;
 }

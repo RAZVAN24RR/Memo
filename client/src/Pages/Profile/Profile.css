@@ -5,6 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
+  overflow: none;
 }
 .team {
   padding-top: 2.5vw;
@@ -16,7 +17,7 @@
 }
 
 .Profile-name {
-  width: 50%;
+  max-width: 500px;
   margin-bottom: 5vh;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -26,7 +27,6 @@
   overflow: hidden;
   border-right: 0.15em solid orange;
   border-left: 0.15em solid #0d6efd;
-  border-radius: 0 10px 10px 0;
   padding: 10px;
   white-space: nowrap;
   font-size: 3rem;
@@ -48,7 +48,7 @@
   font-size: 2rem;
   white-space: nowrap;
   font-family: 'Roboto', sans-serif;
-  border-left: 4px solid #0d6efd;
+  border-left: 3px solid #0d6efd !important;
 }
 .span-b {
   color: #0d6efd;
@@ -87,26 +87,41 @@
 }
 
 /* Pentru mobile , e un bug  */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
+  .Profile {
+    max-width: 100%;
+  }
   .Profile-cont {
-    width: 100vw;
-    margin-left: 24px;
+    width: 92%;
+
+    margin-right: 0;
     overflow: hidden;
   }
   .Profile-name {
     margin-top: 2rem;
-    width: 90%;
-    font-size: 2rem;
+    max-width: 90%;
+    font-size: 1.5rem;
+    padding-top: 30%;
+    letter-spacing: 1px;
+    padding-bottom: 1rem;
+    overflow: hidden;
   }
   .Profile-btns {
-    width: 100% !important;
+    width: 90% !important;
+    margin-right: 0;
   }
   .Profile-p {
-    font-size: 1.5rem !important;
-    width: 100vw;
+    font-size: 1.3rem !important;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-left: 2px solid #0d6efd;
+    border-bottom: none;
   }
-  .Profile-p > p {
-    display: block;
-    overflow: hidden;
+  .span-o {
+    border-bottom: none;
+    color: orange;
+    padding: 0.5rem;
   }
 }
