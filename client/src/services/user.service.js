@@ -21,12 +21,15 @@ const getUserByName = async (name) => {
 const deleteUser = async (userId) => {
   return await axiosAuthInstanceToAPI.delete(`/users/${userId}`);
 };
-
+const getAllUsers = async () => {
+  return await axiosAuthInstanceToAPI.get(`/users`);
+};
 const UserService = {
   register,
   profile,
   deleteUser,
   getUserByName,
+  getAllUsers,
 };
 
 export default UserService;

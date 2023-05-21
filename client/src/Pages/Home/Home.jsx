@@ -41,12 +41,12 @@ const Home = () => {
           setXp(`${_data.years} years, ${_data.months} months`);
         }
         setUser(_data);
-        console.log(_data);
+        // console.log(_data);
       });
   }, [jwt, useId]);
   const handleClickTeam = (e) => {
     navigate(`/teams/${e._id}`);
-    console.log(e._id);
+    // console.log(e._id);
   };
   const handleAddTeam = () => {
     navigate('/addTeam');
