@@ -35,8 +35,7 @@ const AddTeam = () => {
     TeamService.createTeam(ProjectName, Description, Members).then(
       (res) => {
         if (res.status === HttpStatusCode.Created) {
-          
-          res.data.data.newTeam._id
+          // res.data.data.newTeam._id;
           navigate('/home');
         } else {
           alert('Failed to create user!');
