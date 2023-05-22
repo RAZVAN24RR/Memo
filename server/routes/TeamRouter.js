@@ -9,8 +9,8 @@ router
   .route('/')
   .get(AuthMiddleware.isloggedIn, TeamController.getAllTeams)
   .post(
-    AdminMiddleware.isManager,
-    AdminMiddleware.isManager,
+    // AdminMiddleware.isManager,
+    // AdminMiddleware.isManager,
     TeamController.createTeam
   );
 

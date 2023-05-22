@@ -186,29 +186,29 @@ function Profile(props) {
             </svg>
           </div>
           <p className="Profile-p">
-            <b>--Rank:</b> <span className="span-b">{role}</span>
+            <b>Rank:</b> <span className="span-b">{role}</span>
           </p>
           <p className="Profile-p">
-            ---Xp in company: <span className="span-o">{xp}</span>
+            Xp in company: <span className="span-o">{xp}</span>
           </p>
           <p className="Profile-p">
-            ---Tech-stack:{' '}
+            Tech-stack:{' '}
             <span className="span-o">
               {techStackHelper(printHelper(data.techStack))}
             </span>
           </p>
           <p className="Profile-p">
-            ---Communication-style:{' '}
+            Communication-style:{' '}
             <span className="span-o">{printHelper(data.comStyle)}</span>
           </p>
           <p className="Profile-p">
-            ---Frameworks:{' '}
+            Frameworks:{' '}
             <span className="span-o">
               {printHelper(data?.frameworks?.join(', '))}
             </span>
           </p>
           <p className="Profile-p">
-            ---Years of experience:{' '}
+            Years of experience:{' '}
             <span className="span-o">
               {printHelper(data.yearsOfExperience)}
             </span>

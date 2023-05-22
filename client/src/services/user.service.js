@@ -24,6 +24,7 @@ const deleteUser = async (userId) => {
 const getAllUsers = async () => {
   return await axiosAuthInstanceToAPI.get(`/users`);
 };
+
 const UserService = {
   register,
   profile,
