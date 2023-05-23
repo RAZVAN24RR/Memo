@@ -52,7 +52,7 @@ const ROUTES = [
     element: <ChatBot />,
   },
   {
-    path: '/chatMess/:userId',
+    path: '/chatMess/:teamId',
     element: <ChatTeam />,
   },
 ];

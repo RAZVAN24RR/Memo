@@ -1,0 +1,60 @@
+.title_chat_team {
+  text-align: center;
+  max-width: 500px;
+  margin-bottom: 5vh;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #282828;
+  letter-spacing: 2px;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  border-left: 0.15em solid #0d6efd;
+  border-radius: 0 10px 10px 0;
+  padding: 10px;
+  white-space: nowrap;
+  font-size: 3rem;
+  animation: typing-Profile-name 1s steps(40) forwards;
+  animation-duration: 1s;
+}
+.cont_title_chat_team {
+  display: flex;
+  margin-left: 25px;
+}
+@media only screen and (max-width: 750px) {
+  .chat_mess_cont {
+    padding-top: 30%;
+    height: 90vh !important;
+    overflow: hidden;
+  }
+  .title_chat_team {
+    max-width: 90%;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: 25px;
+    margin-bottom: 0 !important;
+  }
+  .back_team {
+    width: 100%;
+    margin-left: 25px;
+  }
+  .back_team > svg {
+    margin-bottom: 1rem;
+  }
+  .cont_chat {
+    width: 100%;
+    height: 90%;
+    padding: 1rem;
+  }
+  .mess_chat {
+    width: 100%;
+    height: 90%;
+    border: 2px solid rgb(190, 190, 190);
+
+    border-radius: 10px;
+  }
+  .inputs_chat {
+    height: 10%;
+    margin-top: 1rem;
+  }
+}
