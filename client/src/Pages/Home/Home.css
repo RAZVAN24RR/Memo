@@ -47,6 +47,9 @@
   animation: typing-Profile-name 1s steps(40) forwards;
   animation-duration: 1s;
 }
+.teams_section {
+  margin-bottom: 3rem;
+}
 /* Pentru mobile , e un bug  */
 @media only screen and (max-width: 750px) {
   .home_container {

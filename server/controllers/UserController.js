@@ -77,3 +77,18 @@ exports.deleteUser = async (req, res) => {
     res.status(500).end();
   }
 };
+exports.addTeamtoUser = async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.body.dataId },
+      { $push: { teams: req.body.teamId } }
+    );
+    res.status(200).json({
+      status: 'success',
+      user
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).end();
+  }
+};

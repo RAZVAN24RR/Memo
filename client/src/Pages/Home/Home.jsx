@@ -124,12 +124,14 @@ const Home = () => {
               </Button>
             </div>
           ) : (
-            <Button variant="diabled">Add team</Button>
+            <div className="add_team_btn">
+              <Button variant="diabled">Add team</Button>
+            </div>
           )}
 
           {teams.map((e) => {
             return (
-              <div>
+              <div className="teams_section">
                 <a onClick={() => handleClickTeam(e)}>
                   <p className="p_team_section">{e.ProjectName}</p>
                 </a>

@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   teams: {
-    type: [mongoose.Schema.Types.ObjectId]
+    type: String
   }
 });
 

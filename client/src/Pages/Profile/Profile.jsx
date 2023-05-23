@@ -32,7 +32,6 @@ function Profile(props) {
   const [role, setRole] = useState('');
   const navigate = useNavigate();
   const { userId } = useParams();
-  const [name, setName] = useState('Raul');
   useEffect(() => {
     if (!jwt) {
       return;
@@ -65,7 +64,7 @@ function Profile(props) {
         }
       );
     } else {
-      UserService.getUserByName(name).then(
+      UserService.profile(userId).then(
         (_data) => {
           console.log(_data);
           if (_data.isManager) {

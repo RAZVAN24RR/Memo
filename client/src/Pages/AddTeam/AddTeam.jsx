@@ -9,13 +9,17 @@ import { useNavigate } from 'react-router';
 import Nav from 'react-bootstrap/Nav';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { axiosAuthInstanceToAPI } from '../../Utils/networking.util';
 import UserService from '../../services/user.service';
 const AddTeam = () => {
   const [ProjectName, setProjectName] = useState('');
   const [Description, setDescription] = useState('');
   const [Members, setMembers] = useState([]);
   const [allMembers, setAllMembers] = useState([]);
-  const [membersTicket, setMembersTicket] = useState([]);
+  const [data, setData] = useState({
+    dataId: '',
+    teamId: '',
+  });
   let members = [];
   const navigate = useNavigate();
   const handleBack = () => {
@@ -35,7 +39,17 @@ const AddTeam = () => {
     TeamService.createTeam(ProjectName, Description, Members).then(
       (res) => {
         if (res.status === HttpStatusCode.Created) {
-          // res.data.data.newTeam._id;
+          Members.map((name) => {
+            UserService.getUserByName(name).then((_data) => {
+              axiosAuthInstanceToAPI
+                .patch('/users/addTeam', {
+                  dataId: _data._id,
+                  teamId: res.data.data.newTeam._id,
+                })
+                .then(() => console.log(data));
+            });
+          });
+
           navigate('/home');
         } else {
           alert('Failed to create user!');
@@ -47,7 +61,6 @@ const AddTeam = () => {
     );
   };
   const handleTicket = (name) => {
-    // name.preventDefault();
     if (!Members.includes(name)) {
       if (Members === []) {
         setMembers(name);

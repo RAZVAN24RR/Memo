@@ -14,7 +14,7 @@ const createTeam = async ({ Members, ProjectName, Description }) => {
 };
 
 const getTeam = async id => {
-  return await Team.findById(id, { _id: 0 });
+  return await Team.findById(id);
 };
 
 const updateTeam = async (id, data) => {

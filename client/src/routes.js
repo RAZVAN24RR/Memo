@@ -8,6 +8,7 @@ import TeamDetails from './Pages/TeamDetails/TeamDetails';
 import AddTeam from './Pages/AddTeam/AddTeam';
 import Chat from './Pages/Chat/Chat';
 import ChatBot from './Pages/ChatBot/ChatBot';
+import ChatTeam from './Pages/ChatTeam/ChatTeam';
 
 const ROUTES = [
   {
@@ -49,6 +50,10 @@ const ROUTES = [
   {
     path: '/chatBot',
     element: <ChatBot />,
+  },
+  {
+    path: '/chatMess/:userId',
+    element: <ChatTeam />,
   },
 ];
 

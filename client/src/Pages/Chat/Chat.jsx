@@ -5,16 +5,43 @@ import '../Home/Home.css';
 import './Chat.css';
 import { useLocalStorage } from '../../hooks/useStorage';
 import jwtDecode from 'jwt-decode';
+import TeamService from '../../services/teams.service';
+import { Circles } from 'react-loader-spinner';
+import { useNavigate } from 'react-router';
 const Chat = () => {
   const [jwt, setJwt] = useLocalStorage('jwt');
   const [teams, setTeams] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     if (jwt !== null)
       UserService.profile(jwtDecode(jwt).userId).then((_data) => {
-        setTeams(_data.teams);
+        _data.teams.map((team) => {
+          TeamService.getTeam(team).then((__data) => {
+            setTeams((prev) => [
+              ...prev,
+              [__data.data.data.team._id, __data.data.data.team.ProjectName],
+            ]);
+          });
+        });
       });
   }, []);
   console.log(teams);
+  const handleTeamChat = (id) => {
+    navigate(`/chatMess/${id}`);
+  };
+  if (teams.length === 0) {
+    return (
+      <Circles
+        height="800"
+        width="80"
+        color="#0D6EFD"
+        ariaLabel="circles-loading"
+        wrapperStyle={{ paddingLeft: '45%' }}
+        wrapperClass=""
+        visible={true}
+      />
+    );
+  }
   return (
     <>
       <div className="teams_chat_cont">
@@ -60,8 +87,28 @@ const Chat = () => {
           </Nav.Link>
         </div>
         <div className="teams_chats">
+          <h1 className="title_chats">Team Chats</h1>
           {teams.map((elem) => {
-            return <p key={elem}>{elem}</p>;
+            return (
+              <p
+                className="chat_team_name"
+                onClick={() => handleTeamChat(elem[0])}
+                key={elem[0]}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76s-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459l-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"
+                  />
+                </svg>{' '}
+                {elem[1]}
+              </p>
+            );
           })}
         </div>
       </div>
