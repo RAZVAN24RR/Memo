@@ -7,17 +7,47 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Circles } from 'react-loader-spinner';
+import { axiosInstanceToAPI } from '../../Utils/networking.util';
+import { useLocalStorage } from '../../hooks/useStorage';
+import jwt_decode from 'jwt-decode';
+import UserService from '../../services/user.service';
 const ChatTeam = () => {
   const { teamId } = useParams();
   const [team, setTeam] = useState([]);
+  const [message, setMessage] = useState();
+  const [prevMessage, setPrevMessage] = useState(' ');
+  const [jwt, remove] = useLocalStorage('jwt');
+  const [user, setUser] = useState({});
+  const userId = jwt_decode(jwt).userId;
   const navigate = useNavigate();
   useEffect(() => {
     TeamService.getTeam(teamId).then((_data) => {
       setTeam(_data.data.data.team);
     });
+    UserService.profile(userId).then((_data) => {
+      setUser(_data);
+    });
   }, []);
   const handleBack = () => {
     navigate(-1);
+  };
+  console.log(user);
+  const hadleSendMessage = async () => {
+    try {
+      await axiosInstanceToAPI
+        .post(`/teams/chat/${team._id}`, {
+          sender: `${user.name}`,
+          message: message,
+        })
+        .then(() => {
+          window.location.reload();
+        });
+      console.log(message);
+    } catch (err) {
+      console.log(err);
+    }
+
+    setMessage('');
   };
   if (team.length === 0) {
     return (
@@ -32,6 +62,7 @@ const ChatTeam = () => {
       />
     );
   }
+  // console.log(user.name);
   return (
     <>
       <div className="chat_mess_cont">
@@ -52,13 +83,38 @@ const ChatTeam = () => {
         </div>
 
         <div className="cont_chat">
-          <div className="mess_chat"></div>
+          <div className="mess_chat">
+            {team.Messages.map((elem) => {
+              return (
+                <div className="message  " key={elem.name}>
+                  <h5
+                    className={
+                      elem.sender == user.name ? 'youName' : 'otherName'
+                    }
+                  >
+                    {elem.sender}
+                  </h5>
+                  <h6
+                    className={
+                      elem.sender == user.name ? 'youMessage' : 'otherMessage'
+                    }
+                  >
+                    {elem.message}
+                  </h6>
+                </div>
+              );
+            })}
+          </div>
           <div className="inputs_chat">
-            <InputGroup className="mb-3">
+            <InputGroup
+              className="mb-3"
+              onChange={(e) => setMessage(e.target.value)}
+            >
               <Form.Control
                 placeholder="Write something..."
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
+                value={message}
               />
               <Button variant="primary" id="button-addon2">
                 <svg
@@ -66,6 +122,7 @@ const ChatTeam = () => {
                   width="30"
                   height="30"
                   viewBox="0 0 24 24"
+                  onClick={hadleSendMessage}
                 >
                   <g fill="none">
                     <path d="M24 0v24H0V0h24ZM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018Zm.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01l-.184-.092Z" />

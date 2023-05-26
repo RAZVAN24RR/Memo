@@ -1,6 +1,6 @@
 .Title {
   width: 130px;
-  margin-top: 100px !important;
+  /* margin-top: 100px !important; */
   margin-bottom: 5vh;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -70,5 +70,20 @@
   }
   100% {
     border-right: 0.35em solid #0d6efd;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .login-c {
+    height: auto;
+    padding-top: 40%;
+  }
+  .Title {
+    margin-top: 0 !important;
+  }
+  .formSignUp {
+    width: 70% !important;
+  }
+  form {
+    width: 100% !important;
   }
 }

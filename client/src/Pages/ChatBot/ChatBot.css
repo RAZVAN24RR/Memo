@@ -1,3 +1,11 @@
 .nav_active_link {
   color: #0d6efd !important;
 }
+@media only screen and (max-width: 750px) {
+  .cont_chatbot {
+    margin-top: 30%;
+  }
+  .response {
+    margin: 2rem;
+  }
+}

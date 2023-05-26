@@ -36,5 +36,7 @@
     padding: 1rem;
     border-radius: 10px;
     color: #282828;
+    margin: 1rem;
+    margin-left: 0 !important;
   }
 }

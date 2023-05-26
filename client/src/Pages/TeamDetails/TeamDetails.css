@@ -33,7 +33,9 @@
   }
   .team_title_section {
     font-size: 2rem;
-    margin-bottom: 3rem !important;
+    display: flex;
+    align-items: center;
+    text-indent: 1rem;
   }
   .team_member {
     width: max-content;
@@ -41,22 +43,31 @@
     padding: 10px;
     border-radius: 8px;
     color: white;
+    margin-left: 25px;
   }
   .participants {
     width: 90%;
     display: flex;
     margin-top: 2rem;
-    justify-content: space-between;
+    margin-left: -25px;
     margin-bottom: 3rem;
   }
   .des {
     margin-bottom: 2rem !important;
   }
   .back {
-    width: 100%;
+    max-width: max-content;
   }
   .back > svg {
     margin-left: -1rem;
     margin-bottom: 1rem;
+  }
+  .section_flex_back {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  svg {
+    margin-bottom: 0 !important;
   }
 }

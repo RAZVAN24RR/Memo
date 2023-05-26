@@ -1,6 +1,6 @@
 const Team = require('../models/TeamModel');
 const TeamService = require('../services/TeamService');
-
+const MessageSchema = require('../models/MessageModel');
 exports.getAllTeams = async (req, res) => {
   try {
     const teams = await TeamService.getAllTeams();
@@ -76,6 +76,53 @@ exports.deleteTeam = async (req, res) => {
     res.status(204).json({
       status: 'success',
       message: 'Team deleted successful'
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid data sent'
+    });
+  }
+};
+exports.postMessage = async (req, res) => {
+  try {
+    const { sender, message } = req.body;
+    let messageS = new MessageSchema({
+      sender,
+      message
+    });
+    // console.log(req.body.params);
+    const team = await Team.updateOne(
+      { _id: req.params.id },
+      { $push: { Messages: messageS } }
+    );
+    res.status(200).json({
+      status: 'success',
+      team: {
+        team
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid data sent'
+    });
+  }
+};
+exports.getAllMessages = async (req, res) => {
+  try {
+    const teamId = req.params.id;
+    console.log(teamId);
+    const team = await Team.findById(teamId);
+    const teamMes = team.Messages;
+    console.log(teamMes);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        teamMes
+      }
     });
   } catch (err) {
     console.log(err);

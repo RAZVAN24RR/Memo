@@ -2,6 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const { Configuration, OpenAIApi } = require('openai');
+
+const configuration = new Configuration({
+  apiKey: `${process.env.OPENAI_API_KEY}`
+});
+
+const openai = new OpenAIApi(configuration);
 
 //Test
 // const jwt = require('jsonwebtoken');
@@ -40,6 +47,18 @@ app.use((req, res, next) => {
 });
 
 // Routes
+
+app.post('/chat', async (req, res) => {
+  // Get the prompt from the request
+  const { data } = req.body;
+
+  // Generate a response with ChatGPT
+  const completion = await openai.createCompletion({
+    model: 'text-davinci-002',
+    prompt: data
+  });
+  res.send(completion.data.choices[0].text);
+});
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/LogIn', loginRouter);

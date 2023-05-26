@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const MessageSchema = require('./MessageModel');
 
 const TeamSchema = new mongoose.Schema({
   ProjectName: {
@@ -12,6 +13,9 @@ const TeamSchema = new mongoose.Schema({
   Members: {
     type: Array,
     required: [true, 'A tram must have members']
+  },
+  Messages: {
+    type: [Object]
   }
 });
 const Team = mongoose.model('Team', TeamSchema);

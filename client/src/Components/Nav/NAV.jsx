@@ -47,7 +47,7 @@ const NAV = (props) => {
               <img className="image-nav" src={LOGO} alt="LOGO" />
             </a>
           </Nav.Item>
-          <div className={nav === 0 ? 'menu_x' : 'menu_x_active'}>
+          {/* <div className={nav === 0 ? 'menu_x' : 'menu_x_active'}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
@@ -59,8 +59,8 @@ const NAV = (props) => {
                 d="M2.22 2.22a.749.749 0 0 1 1.06 0L6 4.939L8.72 2.22a.749.749 0 1 1 1.06 1.06L7.061 6L9.78 8.72a.749.749 0 1 1-1.06 1.06L6 7.061L3.28 9.78a.749.749 0 1 1-1.06-1.06L4.939 6L2.22 3.28a.749.749 0 0 1 0-1.06Z"
               />
             </svg>
-          </div>
-          <div className={nav === 0 ? 'menu_items' : 'menu_items_active'}>
+          </div> */}
+          {/* <div className={nav === 0 ? 'menu_items' : 'menu_items_active'}>
             <div className="alignRight">
               {props.elements.map((element) => {
                 return (
@@ -87,7 +87,7 @@ const NAV = (props) => {
                 />
               </svg>
             </div>
-          </div>
+          </div> */}
         </Nav>
       </>
     );

@@ -5,6 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
 }
 
 /* Pentru mobile , e un bug  */
@@ -36,8 +37,6 @@
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  font-size: 2rem;
-  /* animation: typing2 2s steps(40) forwards; */
   animation-delay: 3s;
 }
 .arrow-down {
@@ -148,5 +147,24 @@
     to {
       width: 50%;
     }
+  }
+}
+@media only screen and (max-width: 750px) {
+  .Pres {
+    height: auto;
+  }
+  .Pres-title {
+    font-size: 1.7rem;
+    margin-top: 12rem !important;
+  }
+  .Pres-title2 {
+    font-size: 1rem !important;
+  }
+  .Pres-line {
+    margin-top: 1rem;
+  }
+  .Line-Bottom {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }

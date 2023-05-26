@@ -13,7 +13,10 @@ router
     // AdminMiddleware.isManager,
     TeamController.createTeam
   );
-
+router
+  .route(`/chat/:id`)
+  .post(TeamController.postMessage)
+  .get(TeamController.getAllMessages);
 router
   .route('/:id')
   .get(TeamController.getTeam)

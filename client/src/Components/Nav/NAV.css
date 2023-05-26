@@ -31,6 +31,9 @@
 .menu_x {
   display: none;
 }
+.nav-item {
+  display: none;
+}
 .menu_items {
   display: flex;
   flex-direction: row;

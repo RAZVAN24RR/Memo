@@ -169,20 +169,22 @@ function Profile(props) {
 
       <div className="Profile-cont ">
         <div className="Profile " fluid="md">
-          <h1 className="Profile-name">{data.name}'s profile</h1>
-          <div className="back">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="60"
-              viewBox="0 0 32 32"
-              onClick={handleBack}
-            >
-              <path
-                fill="currentColor"
-                d="M20.834 8.037L9.64 14.5c-1.43.824-1.43 2.175 0 3l11.194 6.463c1.43.826 2.598.15 2.598-1.5V9.537c0-1.65-1.17-2.326-2.598-1.5z"
-              />
-            </svg>
+          <div className="profile_tile_back">
+            <div className="back_profile">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="60"
+                height="60"
+                viewBox="0 0 32 32"
+                onClick={handleBack}
+              >
+                <path
+                  fill="currentColor"
+                  d="M20.834 8.037L9.64 14.5c-1.43.824-1.43 2.175 0 3l11.194 6.463c1.43.826 2.598.15 2.598-1.5V9.537c0-1.65-1.17-2.326-2.598-1.5z"
+                />
+              </svg>
+            </div>
+            <h1 className="Profile-name">{data.name}'s profile</h1>
           </div>
           <p className="Profile-p">
             <b>Rank:</b> <span className="span-b">{role}</span>

@@ -68,3 +68,9 @@
     height: 70vh !important;
   }
 }
+@media only screen and (max-width: 750px) {
+  .signUp-div {
+    margin-top: 0 !important;
+    padding-top: 40% !important;
+  }
+}
